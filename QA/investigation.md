@@ -72,3 +72,8 @@ Following the standards research, Aniekan authorized implementing the recommenda
 Preparation evidence: both execution projects passed TypeScript no-emit checking; all seven helper/POM/spec files match between builds; both source/runtime manifests have no file mismatches and their health endpoints report the matching build IDs. Both Postman collections parse, and all four JSON bodies in each API suite match exported requests. Source review retained the same $1,500/payment-identity assertions for TC07. These are readiness observations, not application-test outcomes or human assertion review.
 
 RUN-002 remains 0/8 executed with G1/G2 review Pending. RUN-001 outcomes and their pending human-review status are unchanged. The submitted repository remains clean at its original commit. Product code, fixtures, automation and result tables were not modified. The next review concerns v2's scope, oracle, readiness and bounded buggy-build execution; fixed retest and handoff require their later decisions.
+
+
+## Human review feedback: case-selection briefing — 21 October 2026
+
+Aniekan did not approve execution. He requested a briefing on the proposed cases and why those cases were selected, describing the link-only request as blind approval. Codex added the selection rationale, UI/API channel explanation, alternatives and coverage limits to packet v2, and made an in-conversation briefing mandatory before future review requests. The eight business cases, expected results and RUN-001 evidence are unchanged. RUN-002 remains 0/8 executed with the human decision Pending.

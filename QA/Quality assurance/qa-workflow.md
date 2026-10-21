@@ -62,7 +62,7 @@ A cycle can combine or change testing types. Preserve its current progress and e
 | G4 — Fix and retest | Identified correction/build, original failure, confirmation checks and adjacent regression | Authorize retest; product-code changes require their own authorization |
 | G5 — Completion and handoff | Criteria assessment, before/after evidence, defect disposition, residual risks, recovery and lessons learned | Approve, approve with stated limits, request changes or reject the scoped handoff |
 
-G1 and G2 can be reviewed together when the complete packet is available. Approval identifies the packet revision, build, allowed work, reviewer and date. Silence is not approval. Within an approved scope, the agent performs routine preparation, execution, investigation and documentation autonomously.
+G1 and G2 can be reviewed together when the complete packet is available. Before asking for a decision, brief the QA engineer in the conversation on the objective, each proposed check and its expected outcome, why those checks were selected over alternatives, gaps and the exact next work. Link the details as supporting material; do not substitute a link or approval button for the briefing. The QA engineer can challenge, replace or expand the checks before authorizing execution. Approval identifies the packet revision, build, allowed work, reviewer and date. Silence is not approval. Within an approved scope, the agent performs routine preparation, execution, investigation and documentation autonomously.
 
 ## Monitoring, change control and records
 
@@ -90,6 +90,25 @@ Verify BR01–BR06 in [business rules](business_rules.md), especially one paymen
 [Intent](intent.md) ranks three plausible failures: duplicate payment after failed delivery, incorrect weekly cut-off and duplicate earning import. Duplicate payment is investigated deeply because a recovery action could repeat its financial effect. Boundary and duplicate-input cases provide adjacent protection. Likelihood is a reasoned hypothesis; production frequency is unknown.
 
 The local rules have no unresolved conflict preventing these eight checks. Concurrency, process crashes, real banks/delivery, account changes and authorization remain outside this cycle. Eight cases meet the assessment minimum within this selected scope; they do not establish comprehensive product coverage. This is a controlled white-box demo, not blind discovery of a live incident.
+
+### Why these eight cases
+
+The selected financial risk is repeat payment during recovery. The three ranked alternatives in intent.md led to this scope: investigate retry after delivery failure deeply, while checking cut-off selection and duplicate earning imports as adjacent risks. The eight-case minimum alone did not determine the selection.
+
+| Case | Selection rationale |
+| --- | --- |
+| TC01 | Establish that payroll starts from the correct approved amount. Otherwise later recovery totals would have an unreliable baseline. |
+| TC02 | Prevent the same earning falling into two weeks, or neither week, at the Monday boundary; verify the adjacent period too. |
+| TC03 | Check that an offset timestamp is converted before applying that boundary. Correct UTC comparisons alone do not establish correct conversion of API inputs. |
+| TC04 | Check input deduplication separately from payment retry: repeating one earning import must not inflate approved pay before processing. |
+| TC05 | Distinguish failure before payment from failure after payment. An unpaid employee needs a safe payroll retry and must not receive a premature notification. |
+| TC06 | Establish the safe delivery-only recovery route after payment succeeds; notification recovery must preserve payment. |
+| TC07 | Exercise the selected high-impact risk: an operator retries payroll after delivery fails. The payment must remain unique and unchanged. |
+| TC08 | Establish successful payment and linked notification creation/order without a controlled fault. TC01 checks selection/aggregation; this case checks delivery responsibilities. |
+
+**Why six UI and two API cases:** the UI cases exercise operator decisions and recovery controls. TC03 sends explicit timezone offsets that the UTC-only earning form cannot express directly. TC04 repeats a client-supplied earning ID, whereas the form generates a new ID for each earning. API is the direct way to test those input contracts. Supporting API fixture setup in UI cases is not counted as additional API coverage.
+
+**Why other cases are deferred:** concurrency, process crashes, real bank/provider behavior and account changes need different infrastructure or product capabilities. Performance, usability, accessibility and security are available workstreams but have not been selected for this functional payroll cycle. Excluding them limits the recommendation to the stated local flow. Repeated delivery failure, repeated payroll retry and additional input-validation combinations could strengthen later coverage; this packet does not claim them verified.
 
 ### Cases, traceability and unchanged expectations
 
@@ -155,7 +174,9 @@ This packet excludes performance, usability, accessibility, security and new pro
 | 21 Oct 2026 / Aniekan | RUN-002 packet v1 | Requested industry-workflow research before continuation; execution not approved |
 | 21 Oct 2026 / Aniekan | Standards-research follow-up | “Proceed” authorized implementing the recommended workflow and revised packet; it does not record review of the resulting v2 execution packet |
 | 21 Oct 2026 / Codex | Revision and preparation | Seven activities mapped, readiness checks recorded and packet v2 prepared; no RUN-002 application cases executed |
-| Pending / QA engineer | RUN-002 G1/G2 packet v2 | Scope/design/readiness review and execution decision Pending |
+| 21 Oct 2026 / Aniekan | RUN-002 G1/G2 approval request | Requested an explanation of the cases and why they were selected; the linked packet alone felt like blind approval. No execution approval given |
+| 21 Oct 2026 / Codex | Case-selection briefing | Added per-case rationale, channel choices, alternatives and coverage limits; business cases and expected results unchanged |
+| Pending / QA engineer | RUN-002 G1/G2 packet v2 with briefing | Review of scope, rationale, oracle and readiness; execution decision Pending |
 | Not started | RUN-002 G3/G4/G5 | Findings, fixed retest and handoff await the preceding evidence and decisions |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.
