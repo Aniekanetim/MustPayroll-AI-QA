@@ -52,10 +52,23 @@ Aniekan authorized the strategy and the complete root-cause report. Codex operat
 
 ## Workflow clarification — 21 October 2026
 
+Historical checkpoint; the later revision section records the current packet status.
+
 Aniekan confirmed that the agent should automate the standard QA workflow with human review and approval end to end, across functional and non-functional testing types. The testing-type intake starts a new cycle when that choice is missing. The [workflow](Quality%20assurance/qa-workflow.md) now defines scope, design/execution, findings, retest and handoff review gates.
 
 The executions above remain RUN-001 historical observations with human review Pending. This clarification approves the operating model, not those results or a release. Aniekan then selected payroll regression across UI and API for RUN-002, while confirming the workflow must adapt to any relevant testing type. Scope/design packet v1 is ready for G1/G2 review. No new test execution or application change is claimed by this documentation update; the only environment preflight read health/build metadata.
 
 ## Standards review before RUN-002 — 21 October 2026
 
+Historical checkpoint before authorization to implement the recommendations.
+
 The QA engineer requested industry-workflow research instead of approving the proposed execution packet. Codex reviewed primary ISTQB material and public ISO standard descriptions. [The review](Quality%20assurance/qa-workflow-review.md) supports the human-reviewed AI model and recommends clearer analysis, preparation, ongoing control and completion activities beneath the project gates. These recommendations are not yet a QA-approved process revision. RUN-002 remains on hold; no new application tests, product-code changes or result updates were made.
+
+
+## Workflow revision and RUN-002 preparation — 21 October 2026
+
+Following the standards research, Aniekan authorized implementing the recommendations. Codex revised the workflow and [RUN-002 packet v2](Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2): seven testing activities beneath five project review gates, explicit risk/requirement analysis, prepared-test entry checks, continuous control, and completion against criteria.
+
+Preparation evidence: both execution projects passed TypeScript no-emit checking; all seven helper/POM/spec files match between builds; both source/runtime manifests have no file mismatches and their health endpoints report the matching build IDs. Both Postman collections parse, and all four JSON bodies in each API suite match exported requests. Source review retained the same $1,500/payment-identity assertions for TC07. These are readiness observations, not application-test outcomes or human assertion review.
+
+RUN-002 remains 0/8 executed with G1/G2 review Pending. RUN-001 outcomes and their pending human-review status are unchanged. The submitted repository remains clean at its original commit. Product code, fixtures, automation and result tables were not modified. The next review concerns v2's scope, oracle, readiness and bounded buggy-build execution; fixed retest and handoff require their later decisions.

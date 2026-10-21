@@ -1,6 +1,6 @@
 # Release-readiness checklist
 
-**Agent recommendation: fixed local flow Ready with known limitations; buggy build Not ready. Human release approval: Pending. Assessment submission: not complete.** The corrected reference passed the same eight business cases; the new Loom and candidate review remain outstanding.
+**RUN-001 agent recommendation: fixed local flow Ready with known limitations; buggy build Not ready. Human QA decision: Pending. Assessment submission: not complete.** The corrected reference passed the same eight business cases in RUN-001; the new Loom and candidate review remain outstanding. The evidence table below describes that run, not a new RUN-002 execution.
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
@@ -13,6 +13,12 @@
 | Safe operational handoff | Retry notification for delivery failure; preserve payment reference; stop and reconcile duplicates | Documented in directive |
 | Human QA review | Review the scope, expected behavior, representative evidence, script assertions, findings and release recommendation; record the decision in [the workflow](qa-workflow.md) | Pending; repeating every agent action manually is not required |
 | Loom and professional application material | New ≤5-minute video; review the professional cases for the second application | Outstanding |
+
+## RUN-002 completion review
+
+[Packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) defines entry checks, execution bounds and completion criteria. G1/G2 review is Pending; none of its eight application cases has run. Preparation checks do not renew the release recommendation or approve prior results.
+
+At completion, account for every planned case and BR01–BR06, retain original failures and separate retests, and give each open defect a disposition. A Ready recommendation requires eight valid fixed-build passes and no unresolved payment-identity/recovery blocker. Any exception remains visible for the human decision. Retain the reusable checks and recovery handoff, and record the UTF-8 harness lesson carried forward from RUN-001. The QA engineer records the actual evidence reviewed and the accepted limits; organizational production-release authority remains separate.
 
 ## Decision and blockers
 

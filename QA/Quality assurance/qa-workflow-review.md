@@ -1,10 +1,10 @@
 # QA workflow standards review
 
-**Reviewed: 21 October 2026. Status: research complete; recommendations await review. RUN-002 execution remains on hold.**
+**Reviewed: 21 October 2026. Status: recommendations authorized for implementation and incorporated into the workflow and RUN-002 packet v2. The revised execution packet awaits QA review; RUN-002 application testing has not begun.**
 
 ## Conclusion
 
-The proposed AI-led, human-reviewed approach has a credible industry basis. Our five gates are a project approval policy; they are not the standard test process itself. We should map those gates to recognized testing activities and strengthen preparation, ongoing control and completion before executing RUN-002.
+The proposed AI-led, human-reviewed approach has a credible industry basis. Our five gates are a project approval policy; they are not the standard test process itself. The revised workflow maps them to recognized testing activities and strengthens preparation, ongoing control and completion before RUN-002 execution.
 
 ## Authoritative references and review limits
 
@@ -40,9 +40,9 @@ The GenAI syllabus describes agents that can act through tools across testing ac
 
 **Our proposed application:** the agent performs the technical work; the QA engineer reviews its assumptions, coverage, evidence and conclusions. Reviews can verify evidence and assertions without repeating every action manually. Record the actual review method and decision. Agent execution, QA review and product release authority remain distinct responsibilities.
 
-## Gaps in our current draft
+## Gaps identified in the initial draft
 
-These are findings from comparing our repository's draft with the references above, not additional universal requirements imposed by a standard.
+These findings describe the draft before the revision. They are project improvements informed by the references, not additional universal requirements imposed by a standard. The corresponding corrections are now incorporated into [the workflow](qa-workflow.md).
 
 | Current draft | Proposed correction |
 | --- | --- |
@@ -73,6 +73,8 @@ For the current payroll cycle, require agreed BR01–BR06 expectations, reviewed
 
 The same approach adapts to another testing objective. API and browser identify interaction channels; either can support functional or non-functional checks. For a performance segment, agree workload and measurable thresholds. For usability, distinguish expert inspection from evidence collected with representative users. For security/accessibility, identify the specific criteria and the limits of the selected method. ISO/IEC 25010 provides the broader quality-model reference; the particular method remains a scoped project decision.
 
-## Proposed next action
+## Implementation and next decision
 
-Revise the current workflow and RUN-002 packet to expose the missing analysis, execution-readiness and ongoing-control information. Present that revision for QA review before any new application testing. Keep RUN-001 observations intact and maintain their pending human-review status. No application, fixture, script or test-result changes were performed by this research.
+After the research, Aniekan authorized implementation of these recommendations. [The revised workflow and packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) now expose the seven activities, requirement/risk analysis, preparation evidence, continuous control and completion review. Source/build integrity, both test projects' TypeScript checks and exported API inputs were checked without executing the application cases.
+
+The next decision is G1/G2 approval of that concrete packet, authorizing eight buggy-build cases and bounded investigation. Findings review precedes separately approved fixed retesting. RUN-001 evidence remains intact with human review Pending. No application, fixture, script or test-result changes were made by this revision.

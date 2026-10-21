@@ -16,13 +16,13 @@ This attempt uses AI throughout the QA cycle: requirements review, risk selectio
 
 The AI agent carries out the QA work; the QA engineer directs it, reviews evidence and approves decisions throughout. The cycle supports API, UI/functional, usability, performance, accessibility and other testing types. The current payroll results cover only the six UI and two HTTP cases identified below.
 
-Start by telling the agent what kind of testing is needed. If that is missing, the agent asks. It then prepares the scope and test design for review, executes the approved plan, investigates findings, retests an available correction and proposes a handoff. Human approvals are recorded separately from the test outcomes.
+Start by telling the agent what testing is needed; it asks when that choice is missing. It analyzes requirements and risks, designs the checks, and prepares scripts, data and the environment for review. After approval it executes, investigates findings, confirms an approved correction and completes the handoff. Progress and changed risks are tracked throughout. These iterative testing activities sit beneath our five human review gates. Human decisions are recorded separately from test outcomes.
 
 [Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
 
-The starting selection is payroll regression across UI and API. **RUN-002 execution is on hold pending review of the workflow standards research.** [The research and proposed corrections](QA/Quality%20assurance/qa-workflow-review.md) identify the missing process detail. [Packet v1](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v1) is retained for revision and is not approved for execution. The workflow can adapt to a different or combined testing type while retaining progress and evidence. Previous RUN-001 results remain AI-executed evidence awaiting human review; this workflow clarification does not approve them retrospectively.
+The starting selection is payroll regression across UI and API. The [standards review](QA/Quality%20assurance/qa-workflow-review.md) informed the revised process. **[RUN-002 packet v2](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) is ready for scope, design and readiness approval; application-test execution has not begun.** It records the eight-case scope, preparation evidence, stop/resume conditions and completion criteria. The same workflow can adapt to another testing objective while retaining progress. Previous RUN-001 results remain agent-executed evidence awaiting human review.
 
-## Verified result
+## RUN-001 verified result
 
 **Buggy: 7 passed / 1 failed. Fixed: 8 passed / 0 failed.** These are the same eight cases: six Chromium browser cases and two separately executed HTTP cases. Only TC07 fails in buggy: payroll retry records $3,000 instead of preserving the original $1,500 payment. The same assertion passes in fixed. The Postman collections provide reviewer reproduction; no Postman execution is claimed.
 

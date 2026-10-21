@@ -10,9 +10,9 @@ Two independent local builds contain the same UI, data rules and test expectatio
 
 ## QA operating model
 
-Use the [AI-led QA workflow](Quality%20assurance/qa-workflow.md). The agent asks which testing type is needed when it is not already stated, prepares the scope/design for QA review, executes the approved plan, investigates failures and proposes the correction, retest and handoff. The QA engineer reviews the evidence and owns the scoped approval decisions. API, UI/functional, usability, performance and other types follow the same cycle with methods suited to each.
+Use the [AI-led QA workflow](Quality%20assurance/qa-workflow.md). The agent establishes the testing objective, analyzes requirements and risks, designs the checks, and prepares scripts, data and the environment. After QA approval it executes, investigates, confirms an approved correction and completes the handoff. Monitoring/control runs throughout. The QA engineer reviews the evidence and owns the scoped decisions. These activities adapt to functional and non-functional objectives through API, browser or other appropriate methods; our five approval gates are project governance.
 
-RUN-001 below is completed agent execution awaiting human review. For RUN-002, the QA engineer selected payroll regression across UI and API. The QA engineer requested standards research before approving execution. That review is complete; workflow/packet revisions await review and RUN-002 remains on hold. The same workflow can adapt to usability, performance, accessibility, security or a combined type when needed; none of those additional categories is claimed executed by this update.
+RUN-001 below is completed agent execution awaiting human review. For RUN-002, the QA engineer selected payroll regression across UI and API, requested standards research, then authorized implementing its recommendations. [Packet v2](Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) now records the test basis, eight cases, readiness evidence, execution bounds, monitoring and completion criteria. Scope/design/readiness approval is Pending; 0/8 application cases have been executed for RUN-002. This update adds no other testing category or product change.
 
 ## Requirements and completion criteria
 
@@ -20,7 +20,7 @@ The [business rules](Quality%20assurance/business_rules.md) define BR01–BR06 a
 
 Completion requires a fresh browser reproduction; confirmed root cause and proposed fix; the same automated TC07 failure and successful fixed retest; eight documented cases/results; a final release decision and recovery handoff. Producing these files does not itself prove execution.
 
-## Final run and decision
+## RUN-001 final run and recommendation
 
 On 21 October 2026, Codex executed the same eight cases against both builds. Buggy: **7 passed / 1 failed (TC07)**. Fixed: **8 passed / 0 failed**. Six cases per build used Chromium page objects; two used direct HTTP requests matching the Postman collection. Postman itself was not executed.
 
@@ -37,7 +37,7 @@ TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retai
 | UI results | [Buggy](Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md) | Recorded with observed outcomes |
 | API results | [Buggy](Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md) | Recorded with observed outcomes |
 | Actionable defect / cause / fix | [Duplicate payment after notification failure](Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) | Confirmed cause, proposed fix and retest evidence |
-| QA workflow and review | [Workflow](Quality%20assurance/qa-workflow.md) | Standards research complete; workflow/packet revision awaits QA review |
+| QA workflow and review | [Workflow and packet v2](Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) | Standards-informed revision implemented; RUN-002 G1/G2 review Pending, execution Not started |
 | AI observations | [Investigation](investigation.md) | Browser and causal investigation recorded |
 | Release decision | [Release-readiness checklist](Quality%20assurance/release_readiness.md) | Evidence complete for local scope; candidate review outstanding |
 | Loom | No new recording supplied | Outstanding; record ≤5 minutes |
