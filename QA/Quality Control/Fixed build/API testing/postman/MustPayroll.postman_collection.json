@@ -1,0 +1,318 @@
+{
+  "info": {
+    "name": "MustPayroll AI QA — Fixed build",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Manual reproduction at port 4276. No collection scripts or saved execution claims. Check health, use fresh records per case, and manually save payrollDatasetId after each create response. All amounts are USD cents."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:4276"
+    },
+    {
+      "key": "payrollDatasetId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Check build",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/health",
+        "description": "Expect 200 and build.variant fixed. Retain build.id."
+      },
+      "response": []
+    },
+    {
+      "name": "TC03 — timezone",
+      "item": [
+        {
+          "name": "1. Create fresh test records",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets",
+            "description": "Expect 201. Copy response payrollDatasetId to the collection variable payrollDatasetId and Save. Never reuse a dataset from another case.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"testDataPreset\": \"employeesOnly\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2. Import offset timestamps",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/earnings",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"earnings\": [\n    {\n      \"earningId\": \"before-opening\",\n      \"employeeId\": \"emp-001\",\n      \"description\": \"Weekly project earnings\",\n      \"earnedAt\": \"2026-10-05T00:30:00+01:00\",\n      \"amountCents\": 20000,\n      \"approvalStatus\": \"approved\"\n    },\n    {\n      \"earningId\": \"at-opening\",\n      \"employeeId\": \"emp-001\",\n      \"description\": \"Weekly project earnings\",\n      \"earnedAt\": \"2026-10-05T01:00:00+01:00\",\n      \"amountCents\": 10000,\n      \"approvalStatus\": \"approved\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3. Process Tuesday",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/pay-runs",
+            "description": "Expect $100 (10000 cents), only at-opening counted.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduledPayRunAt\": \"2026-10-13T09:00:00.000Z\",\n  \"simulatedProcessingAt\": \"2026-10-13T09:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "TC04 — duplicate earning ID",
+      "item": [
+        {
+          "name": "1. Create fresh test records",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets",
+            "description": "Expect 201. Copy response payrollDatasetId to the collection variable payrollDatasetId and Save. Never reuse a dataset from another case.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"testDataPreset\": \"employeesOnly\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2. Import earning",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/earnings",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"earnings\": [\n    {\n      \"earningId\": \"duplicate-earning\",\n      \"employeeId\": \"emp-001\",\n      \"description\": \"Weekly project earnings\",\n      \"earnedAt\": \"2026-10-08T12:00:00Z\",\n      \"amountCents\": 150000,\n      \"approvalStatus\": \"approved\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3. Repeat identical import",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/earnings",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"earnings\": [\n    {\n      \"earningId\": \"duplicate-earning\",\n      \"employeeId\": \"emp-001\",\n      \"description\": \"Weekly project earnings\",\n      \"earnedAt\": \"2026-10-08T12:00:00Z\",\n      \"amountCents\": 150000,\n      \"approvalStatus\": \"approved\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4. Process Tuesday",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/pay-runs",
+            "description": "Expect one earning and one $1,500 payment.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduledPayRunAt\": \"2026-10-13T09:00:00.000Z\",\n  \"simulatedProcessingAt\": \"2026-10-13T09:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Defect reproduction — TC07",
+      "item": [
+        {
+          "name": "1. Create fresh test records",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets",
+            "description": "Expect 201. Copy response payrollDatasetId to the collection variable payrollDatasetId and Save. Never reuse a dataset from another case.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"testDataPreset\": \"oneApprovedEarning\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2. Fail next notification delivery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/test-controls/next-failure",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"failureType\": \"notificationDelivery\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3. First payroll attempt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/pay-runs",
+            "description": "Expect one 150000-cent payment and one pending notification. Retain their IDs.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduledPayRunAt\": \"2026-10-13T09:00:00.000Z\",\n  \"simulatedProcessingAt\": \"2026-10-13T09:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4. Retry the same payroll",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}/pay-runs",
+            "description": "Correct: same one payment and same notification, now sent. Buggy: two payments totaling 300000 cents.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduledPayRunAt\": \"2026-10-13T09:00:00.000Z\",\n  \"simulatedProcessingAt\": \"2026-10-13T09:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5. Read saved records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/payroll-datasets/{{payrollDatasetId}}?scheduledPayRunAt=2026-10-13T09%3A00%3A00.000Z",
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

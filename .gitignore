@@ -1,0 +1,13 @@
+**/node_modules/
+**/data/
+**/dist/
+**/build-manifest.json
+**/server/build-info.mjs
+**/*.log
+**/*.tsbuildinfo
+**/.env*
+**/.vite/
+**/.playwright-cli/
+output/
+mental_model/
+loom-script.md

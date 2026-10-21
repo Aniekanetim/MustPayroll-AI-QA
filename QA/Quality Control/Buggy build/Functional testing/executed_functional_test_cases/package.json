@@ -1,0 +1,26 @@
+{
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aniekanetim/MustPayroll-AI-QA.git"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "name": "mustpayroll-ai-qa-buggy-tests",
+  "description": "Run the six UI functional cases against the MustPayroll fixed application.",
+  "scripts": {
+    "build:app": "tsx scripts/build.ts",
+    "test": "playwright test --config playwright.config.ts",
+    "verify": "tsc --noEmit && tsx scripts/verify.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "^5.6.3"
+  }
+}
