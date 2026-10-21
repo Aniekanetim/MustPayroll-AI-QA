@@ -1,21 +1,51 @@
 # AI-led investigation record
 
-## Question and starting evidence
+## Question and sources
 
-Can a payroll retry safely recover notification failure after an employee has already been paid? BR04 and BR06 require one employee-period payment and recoverable notification work.
+Can a payroll retry recover notification failure without paying an employee again? BR04 and BR06 require one employee-period payment and recoverable notification work. The supplied MUST role brief establishes the assessment requirements. The transcript explains the AI-led workflow; the previous MustPayroll supplies reusable application/page-object code. No previous result counts as evidence of this attempt.
 
-This is a white-box controlled demonstration. Codex knows the deliberately faulty policy; it is not a blind discovery or a historical production incident. Two code copies and the existing page objects were adapted from MustPayroll. No prior execution status was imported.
+This is a **white-box controlled demonstration**. Codex knows the deliberately faulty policy. It is not a blind discovery or a historical production incident.
 
-## Planned checks
+## Observed browser investigation — 21 October 2026, UTC
 
-1. In a fresh browser dataset, fail one notification delivery, process payroll and record the payment and Pending notification.
-2. Retry the same payroll without changing earnings or date. Compare payment count, amounts and identities.
-3. Countercheck on the buggy build: recover only the notification before repeating payroll. If notification state drives the completion check, that sequence should avoid the duplicate.
-4. Inspect the predicate and database constraint, then run the same business assertion on the corrected reference.
-5. Execute adjacent approval, boundary, timezone, deduplication and recovery checks. Preserve first failure separately from fixed results.
+Codex controlled the real in-app browser using fresh isolated records. Technical setup created one approved $1,500 earning for Amara and armed a single notification-delivery failure. Payroll and recovery actions below were clicked in the browser, not substituted with HTTP calls.
 
-**Execution status: pending.** Actual browser actions, causal results and regression outcomes will be added after they occur.
+| Step | Action | Observed result | Meaning |
+| --- | --- | --- | --- |
+| 1 | In buggy, process the 13 Oct pay run | $1,500 recorded, one Paid payment; employee notification Pending | Payment succeeded before delivery failed |
+| 2 | Retry that same pay run without changing earnings/date | $3,000 recorded; two distinct Paid references, two Sent notifications | The retry repeated the financial effect |
+| 3 | In fresh buggy records, repeat step 1, then use Notifications → Retry pending notifications | Same $1,500 payment; existing notification changed to Sent | Delivery-only recovery preserved payment |
+| 4 | Retry payroll after step 3 | Still one $1,500 payment with its original reference | Changing delivery state removed the erroneous eligibility |
+| 5 | In fixed, repeat steps 1–2 with the same amount, employee and pay instant | One $1,500 payment remained; its original notification became Sent | Corrected recovery did not repeat payment |
 
-## Ownership
+Observed build IDs: buggy `mustpayroll-0.3.0-faulty-eb7f01eeae99`; fixed `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. All runs used the Monday 5 Oct 00:00 UTC inclusive → Monday 12 Oct 00:00 UTC exclusive period, paid on 13 Oct 09:00 UTC.
 
-Aniekan authorized this approach and the complete root-cause report. Codex prepared the fixture and tests. New candidate review or manual execution has not been recorded.
+| Browser observation | Test-record ID | Payment evidence |
+| --- | --- | --- |
+| Buggy failure | `496bfeea-66f1-4a78-847f-b6175c5161a1` | Original `a691679c-295e-49bd-84f9-e52c4ac49ffa`; second `3dd4d944-4822-4aec-b10a-6eaeb62caf68` |
+| Buggy delivery-first control | `5fc3478c-ff1f-493d-b17f-57afe8280368` | `122fef4c-e423-492d-8ee2-b06fa1a229b6` remained the only payment |
+| Fixed retest | `355bb14e-74d7-48ed-a959-761bbe599649` | `56dd0dec-bfe3-478a-ad63-42623ee4c1ac` remained the only payment |
+
+These IDs identify local synthetic records; recreating the case generates new IDs. The API reads corroborated saved amounts and references after the browser actions. No Postman execution is claimed.
+
+## Root-cause verification
+
+The source hypothesis was that the completion query checked `notification.state = 'sent'` rather than committed payment identity. The delivery-first browser countercheck supports that explanation: with the same earnings and pay instant, successful delivery changes the next payroll retry from duplicate payment to no duplicate.
+
+Codex also inspected a fresh Paid/Pending checkpoint through read-only SQLite queries. In both builds, the Sent-notification predicate returned **no row**, while the saved-payment predicate returned **one row**. The buggy build chooses the first predicate. The fixed build chooses the second and activates the unique employee-period payment constraint. The [defect report](Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) contains the cause, correction and release gates.
+
+## Automation quality check
+
+The first migrated test run was invalid: a Windows text-encoding conversion corrupted expected punctuation in bank destinations and period arrows. Codex corrected the test-file encoding. Dollar amounts, business expectations and application behavior were unchanged. That attempt is not counted as six application failures or as release evidence. Its local diagnostic report is retained in ignored `data/playwright/initial-harness-error.json` in each execution project. A fresh full run is required after that correction.
+
+## Final executed comparison
+
+After correcting the harness encoding, Codex ran the complete six-case POM suite once per build with no runner retries or skipped cases. Buggy: **5 UI passed / 1 UI failed (TC07)**. Fixed: **6 UI passed / 0 failed**. TC07 failed on expected $1,500 versus actual $3,000, not on a locator or setup error. The browser spec is byte-identical in both projects.
+
+Direct HTTP checks confirmed the separate TC03 and TC04 cases on both builds using the exported Postman request bodies. Combined coverage is **eight cases per build**: buggy **7 passed / 1 failed**, fixed **8 passed / 0 failed**. No collection export or setup request is counted as another executed test.
+
+Final UI run finished: buggy `2026-10-21T20:21:19.484Z`; fixed `2026-10-21T20:21:09.469Z`. [Buggy UI evidence](Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md) and [fixed UI evidence](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md) retain build IDs, fingerprints, actual results and original/retry payment references. [API evidence](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md) identifies the direct HTTP execution method; Postman was not executed.
+
+## Ownership and remaining work
+
+Aniekan authorized the strategy and the complete root-cause report. Codex operated the browser, inspected saved records, investigated the cause and prepared/executed the tooling. Candidate review of this new evidence, a new Loom and final submission approval remain unrecorded. No agent action is represented as personal manual execution, and no rejection reason or predicted assessment score is inferred.

@@ -1,6 +1,6 @@
 # Duplicate payment when payroll is retried after notification failure
 
-**Defect:** PAY-001 · **Priority:** P1 / release blocker · **Status:** awaiting fresh reproduction.
+**Defect:** PAY-001 · **Priority:** P1 / release blocker · **Status:** reproduced in buggy; corrected reference verified in browser and regression.
 
 ## Bug description
 
@@ -42,11 +42,15 @@ One Paid $1,500 payment remains. Its payment ID, amount and destination are unch
 
 ## Actual result
 
-Fresh execution pending; the deliberately faulty completion predicate will be tested rather than treated as execution evidence.
+The first buggy browser attempt recorded one Paid $1,500 payment and a Pending notification. Retrying the same pay run recorded a second $1,500 payment: **$3,000 total**, despite approved pay remaining $1,500. Both notifications then became Sent. Fixed browser retest retained one $1,500 payment and the original reference.
 
 ## Evidence
 
-Pending fresh browser and regression execution. No old screenshot, result or recording is presented as this attempt's proof.
+- [Fresh browser investigation and payment references](../../investigation.md): buggy original `a691679c-295e-49bd-84f9-e52c4ac49ffa`, duplicate `3dd4d944-4822-4aec-b10a-6eaeb62caf68`; fixed retained `56dd0dec-bfe3-478a-ad63-42623ee4c1ac`.
+- [Buggy UI results](../Buggy%20build/Functional%20testing/functional-testing-results.md) and [fixed UI results](../Fixed%20build/Functional%20testing/functional-testing-results.md): TC07 failed on buggy and passed on fixed. The final totals are buggy 7/8 passed; fixed 8/8 passed, including the separate API cases.
+- Saved-record predicate probe: Paid payment + Pending delivery → Sent-notification query returns no row; payment-identity query returns one row.
+
+Browser build IDs: `mustpayroll-0.3.0-faulty-eb7f01eeae99` and `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. No previous submission's evidence is reused.
 
 ## Severity rationale
 
@@ -54,9 +58,13 @@ P1: an ordinary recovery action can duplicate a financial record. The operator c
 
 ## Root cause
 
-Source-supported hypothesis to verify: the buggy `hasCompletedPayment` query requires a linked notification with `state='sent'`. A committed payment with a Pending notification therefore appears incomplete. The faulty variant does not activate the fixed-only employee-period unique index. Causal countercheck: send the existing notification first, then retry payroll without changing earnings.
+**Confirmed in this local fixture.** The [buggy completion query](../../../MustPayroll/MustPayroll_buggy/server/payment-policy.mjs) requires a linked notification with `state='sent'`. A committed payment with a Pending notification therefore appears incomplete, so `processPayRun` inserts another payment. The faulty variant also does not activate the fixed-only employee-period unique index; storage does not stop the second insert.
 
-## Proposed fix and release blockers
+The read-only predicate probe confirmed that the saved payment existed while the Sent-notification query returned no row. The browser countercheck then recovered the notification first: a later payroll retry preserved one payment. This distinguishes a delivery-dependent completion error from an earning-total or date-selection error.
+
+The [fixed completion query](../../../MustPayroll/MustPayroll_fixed/server/payment-policy.mjs) uses the saved payment. The [SQLite constraint](../../../MustPayroll/MustPayroll_fixed/server/payroll.mjs) enforces the employee-period identity for the corrected variant. Payment and notification work are saved in one transaction in both builds; the intentional defect in this attempt is the completion decision.
+
+## Proposed fix, implemented reference and release blockers
 
 Use the committed payment identified by dataset, employee and period as the completion fact, independently of delivery state. Enforce that identity in storage, reuse its ID on retry, and retain payment-plus-notification-work transactionality. Retry only pending delivery after preserving payment.
 

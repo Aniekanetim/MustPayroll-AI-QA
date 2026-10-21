@@ -12,6 +12,12 @@ Two independent local builds make that rule verifiable. The **buggy build** deli
 
 This attempt uses AI throughout the QA cycle: requirements review, risk selection, real-browser exploration, API/record inspection, causal investigation, regression execution and handoff. [The investigation record](QA/investigation.md) distinguishes AI actions, observed evidence and candidate review.
 
+## Verified result
+
+**Buggy: 7 passed / 1 failed. Fixed: 8 passed / 0 failed.** These are the same eight cases: six Chromium browser cases and two separately executed HTTP cases. Only TC07 fails in buggy: payroll retry records $3,000 instead of preserving the original $1,500 payment. The same assertion passes in fixed. The Postman collections provide reviewer reproduction; no Postman execution is claimed.
+
+The [defect report](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) now includes the confirmed root cause, proposed fix, evidence and release blockers. This local result does not complete the remaining video and candidate-review steps.
+
 ## Start the applications
 
 Requires Node.js **22.13 or later**, npm and a terminal. In separate terminals from the repository root:
