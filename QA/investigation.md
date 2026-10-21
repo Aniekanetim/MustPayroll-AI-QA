@@ -97,3 +97,10 @@ TC03/TC04 both passed through Python HTTP using exported Postman payloads. Each 
 A fresh Paid/Pending probe in `791fc3b4-82ed-4643-9c37-ee51ecf43fc1` found the payment but no match for the Sent-notification completion query. Recovering delivery first, then retrying payroll, preserved the original $1,500 payment. This control and the source support the completion-predicate cause. Its first attempt used the default database path instead of the configured database; that path error supplied no causal evidence and was retained as an investigation setup error. The corrected fresh probe checked dataset identity in the configured read-only database before querying.
 
 The agent proposes one P1 defect, PAY-001, remaining Open and blocking the buggy flow. The existing fixed reference should be tested with the same eight expectations after review. G3 findings review and G4 fixed-execution approval are Pending; no RUN-002 fixed case has run. No product code, test implementation or business oracle changed.
+
+
+## Repeated approval-briefing failure and correction — 21 October 2026
+
+Aniekan returned the combined findings/retest request as blind approval because it did not clearly itemize what he was approving and why. This is a process failure, not a new product defect or test outcome. The earlier written rule had not been applied adequately: essential context was left in progress commentary and the final response was compressed, while an approval prompt combined two decisions.
+
+Codex withdrew the combined request, recorded G3 Changes requested and kept G4 execution unauthorized. The workflow and working contract now require an explicit single decision, itemized claims/actions with evidence or pass criteria and rationale, alternatives/limits, exact authorization and a pre-send completeness check. Findings acceptance and next-stage execution cannot share one approval option. The corrected workflow itemizes G3 and lists all eight fixed cases as a preview; the immediate decision is findings acceptance only. No test execution, application change or result rewrite occurred.

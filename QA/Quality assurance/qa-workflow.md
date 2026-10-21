@@ -1,6 +1,6 @@
 # AI-led QA workflow with human review
 
-**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). G3 findings review and the G4 fixed-retest proposal are ready for human review; fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
+**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. G3 findings require a separate decision; G4 is a preview, not an execution request. Fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
 
 ## Purpose and responsibilities
 
@@ -75,6 +75,24 @@ An approval request must enable a decision, rather than merely ask for one. Befo
 5. Record the actual reply, reviewer/date, packet revision, briefing/evidence reviewed, conditions and authorized next work. An approval after a case briefing is not a claim that the reviewer manually read every script or repeated the tests.
 
 This safeguard applies to all testing types and all five gates. A scope change or materially different proposal requires a revised briefing at the affected gate; routine actions within an already approved scope do not need new approval.
+
+### Required approval format and pre-send check
+
+The previous safeguard was not applied adequately: the agent summarized findings and offered a combined findings/retest approval without listing the fixed checks. To prevent repeating that failure, every future request must contain the following in the conversation:
+
+| Required part | What the reviewer must be able to understand |
+| --- | --- |
+| One decision | The specific finding, plan, action or handoff being accepted or authorized, with its revision/build and current state |
+| Itemized review | Each claim or action, its evidence or expected outcome, and why it belongs in this decision. For test execution, list every case with plain-language action, pass criterion and selection rationale |
+| Recommendation and alternatives | What the agent recommends, why, what would justify changing it, and any meaningful uncertainty, gap or limit |
+| Consequence of approval | The exact next permitted work and the decisions that remain unapproved |
+| Evidence access | Direct supporting links, while keeping the decision understandable without opening them |
+
+Deliver the complete briefing in the final response containing the decision request. Progress commentary, earlier messages and linked documents may be collapsed or unseen; they cannot carry essential approval context. Do not send a separate approval prompt before that self-contained briefing. Before sending a request, verify that every part is present. If the reviewer would need prior conversation context, unexplained case IDs, the phrase “the same eight cases,” or a repository search to discover what is being approved, the briefing is incomplete: correct it before requesting a decision.
+
+Do not combine acceptance of findings with authorization to execute the next stage in one approval option. Present G3 findings for a decision first; after acceptance, present the G4 execution proposal with its own case/action/expected-result/rationale table and request its separate decision. A preview of G4 is not an execution request. G1/G2 can still form one decision on a fully briefed bounded plan.
+
+If the reviewer identifies a missing briefing, record Changes requested for that review. Withdraw the inadequate approval request, supply the missing explanation and wait for an actual decision; do not treat the objection as acceptance. Record only the scope the human explicitly approves.
 
 ## Monitoring, change control and records
 
@@ -180,19 +198,43 @@ This packet excludes performance, usability, accessibility, security and new pro
 
 ## RUN-002: findings and fixed-retest proposal
 
-**G3 finding:** one P1/release-blocking defect, PAY-001. [Six UI results](../Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) contain five Pass and TC07 Fail. [Two API results](../Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) both passed. All eight ran on fresh records under unchanged expectations; supporting probes are not additional cases.
+**Current decision: G3 findings acceptance only.** The previous combined G3/G4 request was returned for a clearer briefing and is withdrawn. G3 is Changes requested; G4 execution is not authorized. The fixed plan below is a preview for a later, separate decision.
 
-**Observed failure:** approved pay stayed $1,500. The first attempt saved payment `e2e76454-6e9c-4203-bec4-a59bfe106b88` and a Pending notification. Payroll retry added payment `9ce922f1-a013-4059-bcd6-e8c962ff3f6e`, raising recorded pay to $3,000. This is a business assertion failure corroborated by saved records, not a runner/setup error.
+### Decision 1: review the finding and proposed correction
 
-**Cause and confidence:** the buggy completion query requires a Sent notification. At a fresh Paid/Pending checkpoint, read-only SQL found the existing payment while that completion predicate matched nothing. Sending the original notification first and then retrying payroll preserved one payment. Source, state and the control therefore support the cause. The [actionable report](../Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md#run-002-findings-review) retains reproduction, severity, evidence, cause and proposed fix.
+| Item for acceptance | Evidence / explanation | Why it matters |
+| --- | --- | --- |
+| Execution summary | All eight buggy cases ran on fresh records: TC01, TC02, TC03, TC04, TC05, TC06 and TC08 passed; TC07 failed. Six UI cases used Chromium POM; TC03/TC04 used direct HTTP from exported payloads, not Postman execution | Establishes the actual coverage and prevents setup requests or control probes being counted as extra cases |
+| Observed defect | Amara had $1,500 approved. First processing saved one Paid payment and a Pending notification. Retrying payroll retained that payment and added another $1,500 payment, producing $3,000 | Directly violates one employee-period payment, BR04/BR06 |
+| Severity / disposition | PAY-001 is proposed as P1/release blocker, Open; the buggy flow is Not ready | An operator recovery action can duplicate payment. Existing fixed-reference code does not itself close the defect |
+| Confirmed local cause | The buggy completion query requires a Sent notification. At Paid/Pending, read-only SQL found payment identity but no match for that query. Delivery-only recovery followed by payroll retry preserved one payment | Connects the duplicate to notification-dependent completion, rather than wrong earnings or period selection |
+| Proposed corrective approach | Reuse the committed employee-period payment independently of delivery state, enforce uniqueness, and recover delivery while preserving the payment and linked notification | Addresses the cause and adds storage protection; an existing fixed reference contains this approach |
+| Evidence limits | Synthetic local ledger, simulated delivery, sequential Chromium checks. A supporting probe initially used a wrong database path; no SQL conclusion came from that attempt, and the corrected fresh probe verified the configured dataset | Limits the conclusion to this fixture; does not establish production safety or other testing coverage |
 
-**G4 correction proposed for verification:** the existing fixed reference `mustpayroll-0.3.0-fixed-ca7ffbea67ec` checks saved payment identity and enforces employee-period uniqueness. No new product-code implementation is proposed. It must preserve existing payment and notification records while completing pending delivery.
+[RUN-002 UI evidence](../Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) identifies original payment **e2e76454-6e9c-4203-bec4-a59bfe106b88** and duplicate **9ce922f1-a013-4059-bcd6-e8c962ff3f6e** in dataset **38b2a7f8-cd84-43a2-99d9-b0f94d59a4c2**. The [API evidence](../Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) records the two passing cases. The [actionable report](../Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md#run-002-findings-review) contains reproduction, root cause, proposed fix and release blockers.
 
-**Why this retest:** confirm TC07 under the same first-payment/delivery-failure/payroll-retry sequence, then run the seven adjacent cases from v2. This checks that the correction prevents the duplicate while preserving approved selection, cut-off/timezone handling, input deduplication, unpaid recovery and notification behavior. Expectations, amounts and case IDs remain unchanged.
+**Recommendation:** accept the scoped finding, P1/Open disposition and proposed corrective approach, or identify the claim/evidence requiring more investigation. Acceptance records the reviewed finding and permits completion of retest planning. It does not authorize fixed execution, product changes, defect closure or release.
 
-**Acceptance:** all eight fixed cases must pass validly; TC07 must retain one $1,500 payment, the original payment/notification IDs, amount and destination, with delivery recovered. Retain the buggy failure separately. Any unexpected result is investigated and reported, not changed into the expected result.
+### Decision 2 preview: fixed-reference execution, not yet requested
 
-**Review boundary:** accepting G3 means accepting the scoped findings and evidence. G4 approval authorizes only these eight fixed-reference cases and bounded investigation, followed by separate results. It does not authorize product changes, production release or G5 handoff. RUN-001 fixed results remain reference evidence, not a RUN-002 retest.
+Target: existing fixed build **mustpayroll-0.3.0-fixed-ca7ffbea67ec**. The correction uses saved payment identity and an employee-period uniqueness constraint. No new product-code implementation is proposed.
+
+| Case / channel | Proposed action | Required result | Why this check is needed after correction |
+| --- | --- | --- | --- |
+| TC01 / UI | Process approved current-period earnings alongside Pending, Rejected and next-period records | $4,350 across Amara $1,500, Daniel $2,000 and Zara $850; excluded records remain unpaid | Check that recovery protection has not changed eligibility or aggregation |
+| TC02 / UI | Process the opening/closing boundary fixture for 13 Oct, then 20 Oct | $400 each week; opening included, closing earning paid only next week | Check that employee-period payment identity does not skip the next week's legitimate payment |
+| TC03 / API | Import $200 before opening and $100 at opening using explicit timezone offsets, then process | One $100 payment; before-opening earning excluded | Confirm normalized timestamps still select the correct period |
+| TC04 / API | Import the identical $1,500 earning ID twice, then process | One earning and one $1,500 payment | Distinguish input deduplication from payment-retry protection |
+| TC05 / UI | Fail payment recording once, then retry payroll | Initially no payment or notification; retry records one $1,500 payment | Ensure the new completion check does not mistake a failed payment for a completed one |
+| TC06 / UI | Fail notification delivery after payment, then retry notifications only | Original $1,500 payment and notification IDs retained; Pending becomes Sent | Preserve the existing delivery-only recovery route |
+| TC07 / UI | Fail notification delivery after payment, then retry payroll | One $1,500 payment; original payment/notification IDs, amount and destination retained; notification Sent | Directly disprove the reproduced duplicate-payment failure |
+| TC08 / UI | Process payroll without a controlled fault and inspect payment/notification | One Paid $1,500 payment and one linked Sent notification; payment commits first | Ensure the correction preserves normal notification creation and ordering |
+
+Use fresh records, the same amounts and expected outcomes as buggy, one Chromium worker and no runner retries; execute API cases through Python HTTP using the exported request bodies. Supporting API setup/probes do not add cases. Preserve buggy evidence and record fixed results separately.
+
+This set combines the defect confirmation (TC07) with adjacent regression: eligibility, weekly selection, input duplication, failed-payment recovery and delivery. It does not add concurrency, crash, live-bank/provider, performance, usability, accessibility or security coverage.
+
+**Later G4 approval would authorize:** these eight fixed-reference cases and bounded investigation only, followed by observed results for human review. It would not authorize product-code changes, production release, defect closure without evidence or G5 handoff. Do not request or begin that execution until G3 has its own recorded decision and the reviewer receives the full execution briefing.
 
 ## Review history and current decision
 
@@ -206,7 +248,10 @@ This packet excludes performance, usability, accessibility, security and new pro
 | 21 Oct 2026 / Codex | Case-selection briefing | Added per-case rationale, channel choices, alternatives and coverage limits; business cases and expected results unchanged |
 | 21 Oct 2026 / Aniekan | RUN-002 G1/G2 packet v2 with briefing | “Approved, but update the workflow to prevent blind approval.” Approved the eight buggy cases and bounded investigation after reviewing the conversational case/rationale/expected-outcome briefing. Condition implemented before execution; no manual script review or test replay claimed |
 | 21 Oct 2026 / Codex | RUN-002 buggy execution | Done: UI 5 Pass / 1 Fail, API 2 Pass; TC07 duplicated $1,500 into $3,000. Original records and diagnostics retained |
-| Pending / Aniekan | RUN-002 G3 findings and G4 retest proposal | Findings packet prepared; fixed execution not yet authorized |
+| 21 Oct 2026 / Aniekan | Combined G3/G4 request | Changes requested: the request again felt blind and did not itemize what was being approved and why; no findings acceptance or execution authorization |
+| 21 Oct 2026 / Codex | Approval safeguard correction | Withdrew combined request, added required decision format/pre-send check, itemized G3 claims and G4 case/action/result/rationale preview |
+| Changes requested / Aniekan | RUN-002 G3 findings | Corrected briefing supplied; findings decision still outstanding |
+| Not requested | RUN-002 G4 execution | Separate request follows G3 acceptance and full case briefing; no fixed case executed |
 | Not started | RUN-002 G5 | Completion/handoff decision awaits reviewed fixed evidence |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.
