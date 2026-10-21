@@ -12,6 +12,16 @@ Two independent local builds make that rule verifiable. The **buggy build** deli
 
 This attempt uses AI throughout the QA cycle: requirements review, risk selection, real-browser exploration, API/record inspection, causal investigation, regression execution and handoff. [The investigation record](QA/investigation.md) distinguishes AI actions, observed evidence and candidate review.
 
+## How the AI-led QA workflow operates
+
+The AI agent carries out the QA work; the QA engineer directs it, reviews evidence and approves decisions throughout. The cycle supports API, UI/functional, usability, performance, accessibility and other testing types. The current payroll results cover only the six UI and two HTTP cases identified below.
+
+Start by telling the agent what kind of testing is needed. If that is missing, the agent asks. It then prepares the scope and test design for review, executes the approved plan, investigates findings, retests an available correction and proposes a handoff. Human approvals are recorded separately from the test outcomes.
+
+[Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
+
+The starting selection is payroll regression across UI and API. [RUN-002 scope/design packet v1](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v1) is ready for QA review before buggy-build execution. The workflow can adapt to a different or combined testing type while retaining progress and evidence. Previous RUN-001 results remain AI-executed evidence awaiting human review; this workflow clarification does not approve them retrospectively.
+
 ## Verified result
 
 **Buggy: 7 passed / 1 failed. Fixed: 8 passed / 0 failed.** These are the same eight cases: six Chromium browser cases and two separately executed HTTP cases. Only TC07 fails in buggy: payroll retry records $3,000 instead of preserving the original $1,500 payment. The same assertion passes in fixed. The Postman collections provide reviewer reproduction; no Postman execution is claimed.

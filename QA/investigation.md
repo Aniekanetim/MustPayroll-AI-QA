@@ -49,3 +49,9 @@ Final UI run finished: buggy `2026-10-21T20:21:19.484Z`; fixed `2026-10-21T20:21
 ## Ownership and remaining work
 
 Aniekan authorized the strategy and the complete root-cause report. Codex operated the browser, inspected saved records, investigated the cause and prepared/executed the tooling. Candidate review of this new evidence, a new Loom and final submission approval remain unrecorded. No agent action is represented as personal manual execution, and no rejection reason or predicted assessment score is inferred.
+
+## Workflow clarification — 21 October 2026
+
+Aniekan confirmed that the agent should automate the standard QA workflow with human review and approval end to end, across functional and non-functional testing types. The testing-type intake starts a new cycle when that choice is missing. The [workflow](Quality%20assurance/qa-workflow.md) now defines scope, design/execution, findings, retest and handoff review gates.
+
+The executions above remain RUN-001 historical observations with human review Pending. This clarification approves the operating model, not those results or a release. Aniekan then selected payroll regression across UI and API for RUN-002, while confirming the workflow must adapt to any relevant testing type. Scope/design packet v1 is ready for G1/G2 review. No new test execution or application change is claimed by this documentation update; the only environment preflight read health/build metadata.

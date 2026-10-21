@@ -20,4 +20,6 @@ Investigate the first failure deeply. Keep boundary and duplicate-input checks a
 
 ## How AI is used
 
-Codex reviews the rules, operates the browser, inspects API responses and database behavior, tests causal explanations, adapts the TypeScript page objects and runs the same expectations against both builds. The investigation records those actions and their limits. Candidate review and final release judgment must be recorded separately from agent execution.
+The [AI-led QA workflow](qa-workflow.md) begins with the testing type and a proposed scope. The QA engineer approves the expected behavior and execution plan, then reviews the evidence, findings, retest and handoff. The agent performs the underlying QA work and revises it when review identifies a gap.
+
+For RUN-001, Codex reviewed the rules, operated the browser, inspected API responses/database behavior, tested causal explanations, adapted the TypeScript page objects and executed both builds. Those completed actions are recorded separately from pending human review. Other testing types can use the same workflow without being added to this Quest automatically.

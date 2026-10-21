@@ -6,6 +6,16 @@ This second assessment attempt uses a local payroll demo. The existing submissio
 
 **State: local investigation and eight-case verification complete; candidate review and second-submission material outstanding.** No execution from the submitted repository counts as a new result. The application and page objects are reused; the new buggy policy contains only the payment-completion error. Approval selection and notification creation now match the corrected reference so they cannot obscure this failure.
 
+## Confirmed AI-led QA operating model — 21 October 2026
+
+Aniekan confirmed that the AI agent should carry out the standard QA workflow, with the QA engineer reviewing and approving it end to end across API, UI/functional, usability, performance and other testing types. The QA engineer directs priorities, confirms expected behavior, challenges the evidence and owns the scoped release decision. The agent performs execution, investigation, reporting and retest; the human need not repeat every action manually.
+
+A cycle can combine or switch testing types while retaining its context, progress and evidence. A new cycle begins by establishing the testing type. Ask when it is missing; reuse an explicit choice or scoped approval. G1 reviews scope and the behavior/quality standard; G2 approves the design and bounded execution; G3 reviews evidence and findings; G4 approves targeted retest against an available correction; G5 records the human handoff/release decision. The agent works autonomously within an approved scope, prepares concrete review packets and waits at the affected gate before dependent work. Product-code changes need separate authorization.
+
+**Current work and review state:** RUN-001 execution is Done: buggy 7 Pass / 1 Fail and fixed 8 Pass. Its human review remains Pending. The new workflow does not retroactively approve that run. RUN-002 starts with payroll regression across UI and API, selected by Aniekan on 21 October 2026. He confirmed that the workflow must remain adaptive across all relevant testing types. Scope/design packet v1 proposes the same eight business cases on the buggy build first, followed by findings review and separately approved fixed-build retest. G1/G2 await QA review; G3–G5 have not started. No new tests, fixtures or application changes were made by this workflow update. Read-only environment preflight matched both served build identities to their manifests.
+
+[The workflow and review record](QA/Quality%20assurance/qa-workflow.md) contains the stage packets and decisions. Keep work status, test outcome and human review separate. Preserve failed evidence and record retests independently. Maintain this team-owned context alongside detailed evidence and the assistant's ignored personal continuity notes. No Vettify accounts or private evidence have been copied.
+
 ## Product and rules
 
 One operator records and approves weekly USD earnings. A pay run on Tuesday 09:00 UTC covers the prior Monday 00:00 UTC inclusive through the following Monday 00:00 UTC exclusive. Only approved earnings qualify. Earning IDs are unique within a payroll dataset. One employee receives one payment per period. Failed payment creates no notification; failed notification preserves payment and leaves recoverable notification work. Repeating payroll must not pay again.
@@ -20,7 +30,7 @@ The saved-record probe confirmed the cause: the Sent-notification query returned
 
 TC03 and TC04 passed on both builds through direct Python HTTP calls using the exported Postman payloads. Postman itself was not executed. The first automation run was invalid because test-copy text encoding corrupted punctuation. It was retained locally as harness diagnostics, corrected without changing business expectations, and a new complete run finished. Detailed observations and references are in [the investigation](QA/investigation.md).
 
-Six browser cases and two API cases cover happy path, approval, cut-off, timezone, duplicate input, payment failure, notification failure and payroll retry. API setup supporting a browser case is not counted as a separate API test. The API reproduction will be available in Postman; any direct HTTP execution will be identified accurately.
+Six browser cases and two API cases cover happy path, approval, cut-off, timezone, duplicate input, payment failure, notification failure and payroll retry. API setup supporting a browser case is not counted as a separate API test. The exported Postman collections provide reviewer reproduction; actual direct-HTTP execution is identified in the results.
 
 ## Ownership and outstanding work
 

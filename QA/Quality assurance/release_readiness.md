@@ -1,6 +1,6 @@
 # Release-readiness checklist
 
-**Fixed local flow: Ready with known limitations. Buggy build: Not ready. Assessment submission: not complete.** The corrected reference passed the same eight business cases; the new Loom and candidate review remain outstanding.
+**Agent recommendation: fixed local flow Ready with known limitations; buggy build Not ready. Human release approval: Pending. Assessment submission: not complete.** The corrected reference passed the same eight business cases; the new Loom and candidate review remain outstanding.
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
@@ -11,7 +11,7 @@
 | Automated failure / fixed retest | Same TC07 assertion fails $1,500 vs $3,000 in buggy and passes in fixed | Met |
 | Eight cases per build | Six UI + two separate API cases; buggy 7 passed / 1 failed, fixed 8 passed | Met within stated scope |
 | Safe operational handoff | Retry notification for delivery failure; preserve payment reference; stop and reconcile duplicates | Documented in directive |
-| Candidate review | Independently inspect results, script assertions and release judgment | Not yet recorded |
+| Human QA review | Review the scope, expected behavior, representative evidence, script assertions, findings and release recommendation; record the decision in [the workflow](qa-workflow.md) | Pending; repeating every agent action manually is not required |
 | Loom and professional application material | New ≤5-minute video; review the professional cases for the second application | Outstanding |
 
 ## Decision and blockers

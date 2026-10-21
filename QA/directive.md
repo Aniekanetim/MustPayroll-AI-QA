@@ -8,6 +8,12 @@ Demonstrate that recovering from notification delivery failure cannot pay an emp
 
 Two independent local builds contain the same UI, data rules and test expectations. The buggy build deliberately confuses notification delivery with payment completion. The fixed build checks the saved employee-period payment and protects uniqueness. Neither sends real funds or messages. The previously submitted repository remains unchanged.
 
+## QA operating model
+
+Use the [AI-led QA workflow](Quality%20assurance/qa-workflow.md). The agent asks which testing type is needed when it is not already stated, prepares the scope/design for QA review, executes the approved plan, investigates failures and proposes the correction, retest and handoff. The QA engineer reviews the evidence and owns the scoped approval decisions. API, UI/functional, usability, performance and other types follow the same cycle with methods suited to each.
+
+RUN-001 below is completed agent execution awaiting human review. For RUN-002, the QA engineer selected payroll regression across UI and API. Its scope/design packet is ready for G1/G2 review before buggy execution. The same workflow can adapt to usability, performance, accessibility, security or a combined type when needed; none of those additional categories is claimed executed by this update.
+
 ## Requirements and completion criteria
 
 The [business rules](Quality%20assurance/business_rules.md) define BR01–BR06 and account/admin assumptions. The [intent](Quality%20assurance/intent.md) ranks three possible failures and selects duplicate payment after notification failure.
@@ -18,7 +24,7 @@ Completion requires a fresh browser reproduction; confirmed root cause and propo
 
 On 21 October 2026, Codex executed the same eight cases against both builds. Buggy: **7 passed / 1 failed (TC07)**. Fixed: **8 passed / 0 failed**. Six cases per build used Chromium page objects; two used direct HTTP requests matching the Postman collection. Postman itself was not executed.
 
-TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retained one payment and the original identities. The browser investigation and saved-record predicate probe confirmed the notification-dependent completion error. The fixed local flow is **Ready with known limitations**; the buggy build is **Not ready**. Candidate review and the new Loom still block completing the second submission.
+TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retained one payment and the original identities. The browser investigation and saved-record predicate probe confirmed the notification-dependent completion error. The agent recommends **Ready with known limitations** for the fixed local flow and **Not ready** for the buggy build. Human release approval is pending. Candidate review and the new Loom still block completing the second submission.
 
 ## Results / handoff appendix
 
@@ -31,7 +37,8 @@ TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retai
 | UI results | [Buggy](Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md) | Recorded with observed outcomes |
 | API results | [Buggy](Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md) | Recorded with observed outcomes |
 | Actionable defect / cause / fix | [Duplicate payment after notification failure](Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) | Confirmed cause, proposed fix and retest evidence |
-| AI workflow and observations | [Investigation](investigation.md) | Browser and causal investigation recorded |
+| QA workflow and review | [Workflow](Quality%20assurance/qa-workflow.md) | Adaptive workflow defined; UI/API scope/design ready for review |
+| AI observations | [Investigation](investigation.md) | Browser and causal investigation recorded |
 | Release decision | [Release-readiness checklist](Quality%20assurance/release_readiness.md) | Evidence complete for local scope; candidate review outstanding |
 | Loom | No new recording supplied | Outstanding; record ≤5 minutes |
 
@@ -41,7 +48,7 @@ If payment exists and notification is Pending, use Notifications → Retry pendi
 
 ## AI assistance and ownership
 
-Aniekan authorized the new approach and selected the payroll context. Codex performs requirements analysis, browser operation, supporting HTTP checks, causal investigation, fixture/test adaptation and documentation. Candidate review of this new evidence and final sign-off are not yet recorded. No automated action is represented as personal manual execution.
+Aniekan selected the payroll context and confirmed the operating model: AI performs the QA workflow, with the QA engineer reviewing scope, expected behavior, evidence, findings, retest and the final handoff. Codex performed RUN-001 analysis, browser operation, supporting HTTP checks, causal investigation, fixture/test adaptation and documentation. Those results await recorded QA review. Future cycles use the workflow review gates; no agent action is represented as personal manual execution.
 
 ## Remaining limits
 
