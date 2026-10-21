@@ -1,6 +1,6 @@
 # AI-led QA workflow with human review
 
-**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. G3 now requires focused human confirmation followed by a separate findings decision; the QA engineer is reviewing. G4 is a preview, not an execution request. Fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
+**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. Aniekan has accepted the G3 findings and asked to continue. Specific human confirmation steps/observations were not included in that reply and are not invented. G4 fixed-execution packet v1 is ready for its separate decision. Fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
 
 ## Purpose and responsibilities
 
@@ -199,7 +199,7 @@ The pay instant is simulated Tuesday 13 October 2026, 09:00 UTC. It covers 5 Oct
 
 ### Progress control and completion criteria
 
-**Current RUN-002 progress: 8/8 buggy cases executed; 7 Pass / 1 Fail (TC07), no blocked or unexecuted cases. G3 review Pending; fixed retest Not started.** Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
+**Current RUN-002 progress: 8/8 buggy cases executed; 7 Pass / 1 Fail (TC07), no blocked or unexecuted cases. G3 findings Accepted; specific human confirmation observations unrecorded; fixed retest Not started.** Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
 
 G3 is ready when each buggy case has an observed outcome or explicit blocker, evidence identifies its inputs/build, and the primary defect report includes reproduction, expected/actual, severity, cause or a marked hypothesis, proposed fix and release blockers. Unresolved cause or invalid evidence remains an investigation gap.
 
@@ -213,7 +213,7 @@ This packet excludes performance, usability, accessibility, security and new pro
 
 ## RUN-002: findings and fixed-retest proposal
 
-**Current stage: G3 human confirmation, then findings decision.** Aniekan asked for time to confirm the defect, cause, classification and corrective approach. The guide below supports that focused review. Human confirmation and the resulting decision are Pending; the earlier combined request remains withdrawn. G4 execution is not authorized. The fixed plan is a preview for a later separate decision.
+**Current stage: G3 accepted; G4 execution approval Pending.** Aniekan replied “accepted. continue” after receiving the focused confirmation guide. Record that as the findings decision; the reply does not specify his checks, observations or payment references, so those confirmation details remain unrecorded. No personal manual reproduction or source check is inferred. The earlier combined request remains withdrawn; G4 now has its own execution packet below.
 
 ### Decision 1: review the finding and proposed correction
 
@@ -304,9 +304,15 @@ Return rough notes in this structure; a formal form is unnecessary:
 
 No result or confirmation is inferred until you return. A findings decision does not authorize fixed execution, closure or release.
 
-### Decision 2 preview: fixed-reference execution, not yet requested
+### G4 fixed-reference execution packet v1
+
+**Decision requested:** authorize the eight fixed-reference cases listed below and bounded investigation. G3 acceptance is already recorded; this is not a request to accept it again.
 
 Target: existing fixed build **mustpayroll-0.3.0-fixed-ca7ffbea67ec**. The correction uses saved payment identity and an employee-period uniqueness constraint. No new product-code implementation is proposed.
+
+**Readiness verified on 21 October 2026:** all fixed source/runtime files match the manifest; the normal service on port 4276 reports the same pinned build and source fingerprint. All seven helper/POM/spec files match the buggy project's counterparts. These are read-only preparation checks, not new fixed-case results.
+
+**Execution method:** six Chromium POM cases on isolated port 4285, one worker, zero runner retries; TC03/TC04 use Python HTTP against the identified fixed service on port 4276 with the exported Postman bodies. Use fresh synthetic records per case, preserve RUN-001 fixed and RUN-002 buggy evidence, and record new fixed results separately. Recheck runtime/build and setup at execution start. A case failure or harness error is retained and investigated; expectations are never changed to fit the application.
 
 | Case / channel | Proposed action | Required result | Why this check is needed after correction |
 | --- | --- | --- | --- |
@@ -323,7 +329,7 @@ Use fresh records, the same amounts and expected outcomes as buggy, one Chromium
 
 This set combines the defect confirmation (TC07) with adjacent regression: eligibility, weekly selection, input duplication, failed-payment recovery and delivery. It does not add concurrency, crash, live-bank/provider, performance, usability, accessibility or security coverage.
 
-**Later G4 approval would authorize:** these eight fixed-reference cases and bounded investigation only, followed by observed results for human review. It would not authorize product-code changes, production release, defect closure without evidence or G5 handoff. Do not request or begin that execution until G3 has its own recorded decision and the reviewer receives the full execution briefing.
+**G4 approval would authorize:** these eight fixed-reference cases and bounded investigation only, followed by observed results for human review. All eight must pass validly to support the scoped readiness recommendation; TC07 must preserve the original $1,500 payment, destination and notification identity while recovering delivery. Approval does not authorize product-code changes, production release, automatic defect closure or G5 handoff. G3 has its own recorded acceptance; fixed execution remains Pending until this separate proposal is authorized. Complete the G3 confirmation record with whatever human checks/observations are supplied; do not manufacture them from the acceptance.
 
 ## Review history and current decision
 
@@ -340,8 +346,9 @@ This set combines the defect confirmation (TC07) with adjacent regression: eligi
 | 21 Oct 2026 / Aniekan | Combined G3/G4 request | Changes requested: the request again felt blind and did not itemize what was being approved and why; no findings acceptance or execution authorization |
 | 21 Oct 2026 / Codex | Approval safeguard correction | Withdrew combined request, added required decision format/pre-send check, itemized G3 claims and G4 case/action/result/rationale preview |
 | 21 Oct 2026 / Aniekan | G3 confirmation method | Requested time to personally confirm the defect, cause, classification and proposed correction; required the workflow to provide clear confirmation steps before a decision |
-| Pending / Aniekan | RUN-002 G3 confirmation and findings decision | Focused confirmation guide prepared; waiting for actual human observations and decision, not an acceptance-only reply |
-| Not requested | RUN-002 G4 execution | Separate request follows G3 acceptance and full case briefing; no fixed case executed |
+| 21 Oct 2026 / Aniekan | RUN-002 G3 findings decision | “accepted. continue” — findings decision Accepted. Specific confirmation method/observations not supplied; not recorded as personal manual reproduction or source inspection |
+| 21 Oct 2026 / Codex | G4 preparation | Pinned fixed source/runtime and served identity verified; seven test/POM/helper files match; no fixed cases executed |
+| Pending / Aniekan | RUN-002 G4 execution packet v1 | Separate eight-case execution decision prepared with case/action/result/rationale and limits; execution Not started |
 | Not started | RUN-002 G5 | Completion/handoff decision awaits reviewed fixed evidence |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.

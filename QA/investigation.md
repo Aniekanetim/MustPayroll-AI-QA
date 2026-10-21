@@ -111,3 +111,10 @@ Codex withdrew the combined request, recorded G3 Changes requested and kept G4 e
 Aniekan asked for time to confirm the reported defect, supported cause, classification and corrective approach. He required the workflow to provide clear confirmation steps and ask the QA engineer to perform the check, then return with approval, rejection, changes or another supported response.
 
 Codex updated G3 and added the focused PAY-001 guide: fresh-data/controlled-failure preparation, browser reproduction checkpoints, source plus delivery-first control for the cause, severity/priority/status assessment, fixed-source approach review without fixed execution, and concise return notes. High impact severity, P1 urgency and Open status are separated as proposed classifications for review. Human confirmation remains Pending; no findings approval or manual result is inferred. No tests or fixture setup were executed during this update; product code and observed result tables remain unchanged.
+
+
+## G3 acceptance and separate G4 preparation — 21 October 2026
+
+Aniekan replied “accepted. continue” after the focused confirmation guide. The G3 findings decision is recorded as Accepted. The reply contains no specific confirmation method, observations or references; no personal manual reproduction, source review or control sequence is invented.
+
+Codex prepared G4 execution packet v1 without running fixed cases. Read-only checks matched every fixed source/runtime manifest file and its served identity on 4276: mustpayroll-0.3.0-fixed-ca7ffbea67ec. All seven helper/POM/spec files match across execution projects. The packet itemizes all eight cases, unchanged expected results, selection rationale, tools, isolation and acceptance criteria. Fixed execution requires its separate informed authorization; G5 and defect closure remain unapproved.

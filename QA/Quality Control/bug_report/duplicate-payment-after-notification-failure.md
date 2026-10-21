@@ -1,6 +1,6 @@
 # Duplicate payment when payroll is retried after notification failure
 
-**Defect:** PAY-001 · **Proposed severity:** High (duplicate payment record) · **Proposed priority:** P1 / release blocker · **Status:** Open; RUN-002 agent reproduction complete, human confirmation and decision Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
+**Defect:** PAY-001 · **Proposed severity:** High (duplicate payment record) · **Proposed priority:** P1 / release blocker · **Status:** Open; RUN-002 agent reproduction complete, G3 findings accepted by Aniekan; specific human confirmation observations unrecorded. G4 correction verification Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
 
 ## Bug description
 
