@@ -1,6 +1,6 @@
 # Duplicate payment when payroll is retried after notification failure
 
-**Defect:** PAY-001 · **Priority:** P1 / release blocker · **Status:** RUN-002 buggy reproduction complete, human findings review Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
+**Defect:** PAY-001 · **Proposed severity:** High (duplicate payment record) · **Proposed priority:** P1 / release blocker · **Status:** Open; RUN-002 agent reproduction complete, human confirmation and decision Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
 
 ## Bug description
 
@@ -9,6 +9,10 @@ Payment completion is decided using notification delivery state. If payment succ
 ## Test case
 
 **TC07** is the automated browser regression. TC06 checks the safe notification-only recovery path. Both builds use the same BR04/BR06 expectations.
+
+## Human confirmation before the findings decision
+
+Use the [PAY-001 confirmation guide](../../Quality%20assurance/qa-workflow.md#qa-confirmation-guide-pay-001) to reproduce the reported failure with fresh records, check the source/control supporting the cause, assess severity/priority/status separately and review the corrective approach. Return what you checked and an approve, reject, change, further-investigation or blocked decision. This is a focused human check, not replay of the full regression suite. Fixed-source review at this stage does not authorize fixed-build execution.
 
 ## Preconditions
 
@@ -54,7 +58,7 @@ Browser build IDs: `mustpayroll-0.3.0-faulty-eb7f01eeae99` and `mustpayroll-0.3.
 
 ## Severity rationale
 
-P1: an ordinary recovery action can duplicate a financial record. The operator cannot safely resolve the delivery failure by repeating payroll; the period needs reconciliation. Impact is demonstrated in a synthetic ledger, not asserted as actual employer loss.
+Proposed severity **High** describes the financial-record impact; proposed priority **P1** means the affected payroll behavior should be corrected or blocked before release. **Open** is the defect state while confirmation and accepted correction verification are outstanding. The QA engineer can confirm or revise each classification independently. An ordinary recovery action can duplicate a financial record. The operator cannot safely resolve the delivery failure by repeating payroll; the period needs reconciliation. Impact is demonstrated in a synthetic ledger, not asserted as actual employer loss.
 
 ## Root cause
 

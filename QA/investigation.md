@@ -104,3 +104,10 @@ The agent proposes one P1 defect, PAY-001, remaining Open and blocking the buggy
 Aniekan returned the combined findings/retest request as blind approval because it did not clearly itemize what he was approving and why. This is a process failure, not a new product defect or test outcome. The earlier written rule had not been applied adequately: essential context was left in progress commentary and the final response was compressed, while an approval prompt combined two decisions.
 
 Codex withdrew the combined request, recorded G3 Changes requested and kept G4 execution unauthorized. The workflow and working contract now require an explicit single decision, itemized claims/actions with evidence or pass criteria and rationale, alternatives/limits, exact authorization and a pre-send completeness check. Findings acceptance and next-stage execution cannot share one approval option. The corrected workflow itemizes G3 and lists all eight fixed cases as a preview; the immediate decision is findings acceptance only. No test execution, application change or result rewrite occurred.
+
+
+## Human confirmation task requested — 21 October 2026
+
+Aniekan asked for time to confirm the reported defect, supported cause, classification and corrective approach. He required the workflow to provide clear confirmation steps and ask the QA engineer to perform the check, then return with approval, rejection, changes or another supported response.
+
+Codex updated G3 and added the focused PAY-001 guide: fresh-data/controlled-failure preparation, browser reproduction checkpoints, source plus delivery-first control for the cause, severity/priority/status assessment, fixed-source approach review without fixed execution, and concise return notes. High impact severity, P1 urgency and Open status are separated as proposed classifications for review. Human confirmation remains Pending; no findings approval or manual result is inferred. No tests or fixture setup were executed during this update; product code and observed result tables remain unchanged.

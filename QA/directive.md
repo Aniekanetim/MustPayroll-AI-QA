@@ -30,7 +30,7 @@ TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retai
 
 Codex executed the approved buggy scope: five of six UI cases passed and both API cases passed. TC07 failed because payroll retry added a second $1,500 payment after notification failure, bringing recorded pay to $3,000. A fresh delivery-first control and read-only predicate comparison support the source-confirmed cause.
 
-The proposed disposition is PAY-001 Open, buggy flow Not ready. The existing correction uses payment identity plus employee-period uniqueness. [The findings and retest proposal](Quality%20assurance/qa-workflow.md#run-002-findings-and-fixed-retest-proposal) presents G3 findings for a separate decision and previews each G4 case/action/pass criterion/rationale. The combined approval request was withdrawn after feedback; fixed execution requires its own later briefing and authorization. No new product-code change or RUN-002 fixed execution is claimed.
+The proposed disposition is PAY-001 Open, buggy flow Not ready. The existing correction uses payment identity plus employee-period uniqueness. [The findings and retest proposal](Quality%20assurance/qa-workflow.md#run-002-findings-and-fixed-retest-proposal) presents G3 as focused human confirmation followed by a separate decision, with [clear confirmation steps](Quality%20assurance/qa-workflow.md#qa-confirmation-guide-pay-001), and previews each G4 case/action/pass criterion/rationale. The combined approval request was withdrawn after feedback; fixed execution requires its own later briefing and authorization. No new product-code change or RUN-002 fixed execution is claimed.
 
 ## Results / handoff appendix
 
