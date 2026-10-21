@@ -55,3 +55,7 @@ Aniekan authorized the strategy and the complete root-cause report. Codex operat
 Aniekan confirmed that the agent should automate the standard QA workflow with human review and approval end to end, across functional and non-functional testing types. The testing-type intake starts a new cycle when that choice is missing. The [workflow](Quality%20assurance/qa-workflow.md) now defines scope, design/execution, findings, retest and handoff review gates.
 
 The executions above remain RUN-001 historical observations with human review Pending. This clarification approves the operating model, not those results or a release. Aniekan then selected payroll regression across UI and API for RUN-002, while confirming the workflow must adapt to any relevant testing type. Scope/design packet v1 is ready for G1/G2 review. No new test execution or application change is claimed by this documentation update; the only environment preflight read health/build metadata.
+
+## Standards review before RUN-002 — 21 October 2026
+
+The QA engineer requested industry-workflow research instead of approving the proposed execution packet. Codex reviewed primary ISTQB material and public ISO standard descriptions. [The review](Quality%20assurance/qa-workflow-review.md) supports the human-reviewed AI model and recommends clearer analysis, preparation, ongoing control and completion activities beneath the project gates. These recommendations are not yet a QA-approved process revision. RUN-002 remains on hold; no new application tests, product-code changes or result updates were made.

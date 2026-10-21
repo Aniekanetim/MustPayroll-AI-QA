@@ -4,7 +4,7 @@
 
 This second assessment attempt uses a local payroll demo. The existing submission at https://github.com/Aniekanetim/MustPayroll is preserved. The new investigation follows the Vettify workflow: establish rules, let AI operate the product, compare observations with those rules, investigate the cause, then verify a correction under unchanged expectations.
 
-**State: local investigation and eight-case verification complete; candidate review and second-submission material outstanding.** No execution from the submitted repository counts as a new result. The application and page objects are reused; the new buggy policy contains only the payment-completion error. Approval selection and notification creation now match the corrected reference so they cannot obscure this failure.
+**State: RUN-001 local investigation/eight-case verification complete with human review Pending. RUN-002 execution is on hold at the QA engineer's request while the workflow is reviewed against industry references.** No execution from the submitted repository counts as a new result. The application and page objects are reused; the new buggy policy contains only the payment-completion error. Approval selection and notification creation now match the corrected reference so they cannot obscure this failure.
 
 ## Confirmed AI-led QA operating model — 21 October 2026
 
@@ -12,9 +12,17 @@ Aniekan confirmed that the AI agent should carry out the standard QA workflow, w
 
 A cycle can combine or switch testing types while retaining its context, progress and evidence. A new cycle begins by establishing the testing type. Ask when it is missing; reuse an explicit choice or scoped approval. G1 reviews scope and the behavior/quality standard; G2 approves the design and bounded execution; G3 reviews evidence and findings; G4 approves targeted retest against an available correction; G5 records the human handoff/release decision. The agent works autonomously within an approved scope, prepares concrete review packets and waits at the affected gate before dependent work. Product-code changes need separate authorization.
 
-**Current work and review state:** RUN-001 execution is Done: buggy 7 Pass / 1 Fail and fixed 8 Pass. Its human review remains Pending. The new workflow does not retroactively approve that run. RUN-002 starts with payroll regression across UI and API, selected by Aniekan on 21 October 2026. He confirmed that the workflow must remain adaptive across all relevant testing types. Scope/design packet v1 proposes the same eight business cases on the buggy build first, followed by findings review and separately approved fixed-build retest. G1/G2 await QA review; G3–G5 have not started. No new tests, fixtures or application changes were made by this workflow update. Read-only environment preflight matched both served build identities to their manifests.
+**Current work and review state:** RUN-001 execution is Done: buggy 7 Pass / 1 Fail and fixed 8 Pass. Its human review remains Pending. The new workflow does not retroactively approve that run. RUN-002 starts with payroll regression across UI and API, selected by Aniekan on 21 October 2026. He confirmed that the workflow must remain adaptive across all relevant testing types. Scope/design packet v1 proposes the same eight business cases on the buggy build first, followed by findings review and separately approved fixed-build retest. Aniekan responded to the G1/G2 approval request by requiring standards research first; execution is not approved. The research is complete and identifies changes needed before a revised packet is reviewed. G3–G5 have not started. No new tests, fixtures or application changes were made by this workflow update. Read-only environment preflight matched both served build identities to their manifests.
 
 [The workflow and review record](QA/Quality%20assurance/qa-workflow.md) contains the stage packets and decisions. Keep work status, test outcome and human review separate. Preserve failed evidence and record retests independently. Maintain this team-owned context alongside detailed evidence and the assistant's ignored personal continuity notes. No Vettify accounts or private evidence have been copied.
+
+## Standards research checkpoint — 21 October 2026
+
+The QA engineer requested research into the standard workflow before continuation. The review used ISTQB CTFL v4.0.1, current Testing with Generative AI v1.1, and the public scope statements for ISO/IEC/IEEE 29119-2/-3:2021 and ISO/IEC 25010:2023. ISO full normative texts were not audited, so no formal conformance claim is made.
+
+Finding: the AI-led/human-reviewed model is supported, but the seven recognized testing activity groups need to be visible beneath our custom five review gates. Proposed changes expose requirement/risk analysis, script/data/environment readiness, continuous monitoring/control and a completion review covering residual risk, retained work and improvements. Activities can overlap/repeat; the gates are not a compulsory waterfall process. Human review can verify evidence without re-executing every action.
+
+[The standards review](QA/Quality%20assurance/qa-workflow-review.md) contains source links, the gap comparison and the proposed adaptation. RUN-002 remains selected for payroll UI/API regression, with G1 changes requested and G2 execution on hold. Its v1 packet is retained, not approved. Workflow revision and then QA review precede execution. RUN-001 results, both applications and the test scripts remain unchanged.
 
 ## Product and rules
 

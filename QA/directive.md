@@ -12,7 +12,7 @@ Two independent local builds contain the same UI, data rules and test expectatio
 
 Use the [AI-led QA workflow](Quality%20assurance/qa-workflow.md). The agent asks which testing type is needed when it is not already stated, prepares the scope/design for QA review, executes the approved plan, investigates failures and proposes the correction, retest and handoff. The QA engineer reviews the evidence and owns the scoped approval decisions. API, UI/functional, usability, performance and other types follow the same cycle with methods suited to each.
 
-RUN-001 below is completed agent execution awaiting human review. For RUN-002, the QA engineer selected payroll regression across UI and API. Its scope/design packet is ready for G1/G2 review before buggy execution. The same workflow can adapt to usability, performance, accessibility, security or a combined type when needed; none of those additional categories is claimed executed by this update.
+RUN-001 below is completed agent execution awaiting human review. For RUN-002, the QA engineer selected payroll regression across UI and API. The QA engineer requested standards research before approving execution. That review is complete; workflow/packet revisions await review and RUN-002 remains on hold. The same workflow can adapt to usability, performance, accessibility, security or a combined type when needed; none of those additional categories is claimed executed by this update.
 
 ## Requirements and completion criteria
 
@@ -37,7 +37,7 @@ TC07 reproduced $1,500 becoming $3,000 on buggy retry. The fixed reference retai
 | UI results | [Buggy](Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md) | Recorded with observed outcomes |
 | API results | [Buggy](Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md) · [Fixed](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md) | Recorded with observed outcomes |
 | Actionable defect / cause / fix | [Duplicate payment after notification failure](Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) | Confirmed cause, proposed fix and retest evidence |
-| QA workflow and review | [Workflow](Quality%20assurance/qa-workflow.md) | Adaptive workflow defined; UI/API scope/design ready for review |
+| QA workflow and review | [Workflow](Quality%20assurance/qa-workflow.md) | Standards research complete; workflow/packet revision awaits QA review |
 | AI observations | [Investigation](investigation.md) | Browser and causal investigation recorded |
 | Release decision | [Release-readiness checklist](Quality%20assurance/release_readiness.md) | Evidence complete for local scope; candidate review outstanding |
 | Loom | No new recording supplied | Outstanding; record ≤5 minutes |

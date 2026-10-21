@@ -1,5 +1,7 @@
 # AI-led QA workflow with human review
 
+**Review status — 21 October 2026:** RUN-002 is on hold at the QA engineer's request while the process is checked against industry references. [The standards review](qa-workflow-review.md) records the findings and proposed corrections. The five gates below are our draft review policy, not a claimed industry-standard lifecycle.
+
 ## Purpose and ownership
 
 The agent carries out the QA work. The QA engineer directs that work, reviews its evidence and approves decisions throughout the cycle. This workflow applies to API, UI/functional, usability, performance, accessibility and other testing types. MustPayroll is the current test application; the workflow can be applied to another product.
@@ -66,14 +68,14 @@ A completed execution may contain failed cases. Approving a defect report does n
 
 **Previous run — RUN-001:** already executed under the earlier authorization. Six browser cases and two direct-HTTP cases per build produced buggy 7 Pass / 1 Fail and fixed 8 Pass. Those observations remain valid records; staged human approval was not recorded. They are available for review and are not retroactively marked approved by the workflow clarification.
 
-**Current cycle — RUN-002:** Aniekan selected payroll regression across UI and API on 21 October 2026. He also confirmed that the workflow must adapt to usability, performance, accessibility, security or another testing type when required. Scope/design packet v1 below is ready for review; the type selection is not yet execution approval.
+**Current cycle — RUN-002:** Aniekan selected payroll regression across UI and API on 21 October 2026. He also confirmed that the workflow must adapt to usability, performance, accessibility, security or another testing type when required. Scope/design packet v1 is retained below. Aniekan requested standards research instead of approving execution; revisions now await review.
 
 | Item | Current state | Evidence / decision |
 | --- | --- | --- |
 | RUN-001 execution | Done; human review Pending | [Investigation](../investigation.md) and linked results |
 | RUN-002 testing types | Confirmed: payroll regression, UI + API | User selected this starting scope; other types remain available within the adaptive workflow |
-| RUN-002 G1 scope | Pending QA review | Scope/design packet v1 below |
-| RUN-002 G2 design / execution | Pending QA review | Eight-case design ready; buggy execution awaits approval |
+| RUN-002 G1 scope | Changes requested | Standards review complete; scope/process revision awaits review |
+| RUN-002 G2 design / execution | On hold; not approved | Review the standards findings and revise the preparation/entry criteria before execution |
 | RUN-002 G3 findings | Not started | Requires approved execution and observations |
 | RUN-002 G4 retest | Not started | Required if a correction/retest is in scope |
 | RUN-002 G5 handoff | Not started | Requires the reviewed evidence and QA decision |
@@ -82,7 +84,7 @@ For each decision, append the reviewer/date, gate, approved packet revision or b
 
 ## RUN-002: scope and test-design packet v1
 
-**Decision requested:** approve G1 scope and G2 design, authorizing the agent to execute the eight cases on the buggy build. The agent will then present observed findings for G3 review. Fixed-build retesting is planned for G4 after review of the findings and correction.
+**Packet status:** v1 is retained for comparison and is not approved for execution. The QA engineer requested standards research before continuing. Use the linked review to revise the process and execution-readiness criteria before presenting a new packet. The initial UI/API selection remains unchanged.
 
 ### Objective and oracle
 

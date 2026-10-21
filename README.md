@@ -20,7 +20,7 @@ Start by telling the agent what kind of testing is needed. If that is missing, t
 
 [Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
 
-The starting selection is payroll regression across UI and API. [RUN-002 scope/design packet v1](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v1) is ready for QA review before buggy-build execution. The workflow can adapt to a different or combined testing type while retaining progress and evidence. Previous RUN-001 results remain AI-executed evidence awaiting human review; this workflow clarification does not approve them retrospectively.
+The starting selection is payroll regression across UI and API. **RUN-002 execution is on hold pending review of the workflow standards research.** [The research and proposed corrections](QA/Quality%20assurance/qa-workflow-review.md) identify the missing process detail. [Packet v1](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v1) is retained for revision and is not approved for execution. The workflow can adapt to a different or combined testing type while retaining progress and evidence. Previous RUN-001 results remain AI-executed evidence awaiting human review; this workflow clarification does not approve them retrospectively.
 
 ## Verified result
 
