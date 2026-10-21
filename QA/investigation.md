@@ -77,3 +77,23 @@ RUN-002 remains 0/8 executed with G1/G2 review Pending. RUN-001 outcomes and the
 ## Human review feedback: case-selection briefing — 21 October 2026
 
 Aniekan did not approve execution. He requested a briefing on the proposed cases and why those cases were selected, describing the link-only request as blind approval. Codex added the selection rationale, UI/API channel explanation, alternatives and coverage limits to packet v2, and made an in-conversation briefing mandatory before future review requests. The eight business cases, expected results and RUN-001 evidence are unchanged. RUN-002 remains 0/8 executed with the human decision Pending.
+
+
+## RUN-002 informed approval and execution start — 21 October 2026
+
+After the eight-case/rationale/expected-outcome briefing, Aniekan approved packet v2 and required the workflow to prevent blind approval. Codex added an informed-approval safeguard for every gate and testing type before starting: self-contained briefing, evidence and uncertainties, alternatives, exact next authorization, opportunity for challenge and a recorded decision. The human review method was the conversational briefing; no manual script inspection or test replay is claimed.
+
+G1/G2 authorize the eight buggy-build cases and bounded investigation. Fixed retesting, product changes and handoff approval remain outside this authorization. Execution begins with build/runtime/data preflight and preservation of RUN-001 local diagnostics.
+
+
+## RUN-002 buggy execution and findings — 21 October 2026
+
+G1/G2 approval followed the conversational briefing, and the informed-approval safeguard was implemented before execution. The pinned buggy build and source/runtime hashes matched. RUN-001 diagnostics were archived before the new run; its published observations remain separate.
+
+Codex executed the six Chromium POM cases once, one worker and zero runner retries, from 2026-10-21T21:21:47.989Z to 2026-10-21T21:22:38.361Z. Five passed; TC07 failed the $1,500-versus-$3,000 business assertion. No runner error or skipped case occurred. TC07's original payment `e2e76454-6e9c-4203-bec4-a59bfe106b88` remained and duplicate `9ce922f1-a013-4059-bcd6-e8c962ff3f6e` was added. The retained observation precedes the failing assertion, so the saved-state evidence remains available although later assertions did not run.
+
+TC03/TC04 both passed through Python HTTP using exported Postman payloads. Each used a fresh dataset; Postman itself was not executed. **Combined RUN-002 buggy result: 7 Pass / 1 Fail.** [UI records](Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) and [API records](Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) contain actual data and identities.
+
+A fresh Paid/Pending probe in `791fc3b4-82ed-4643-9c37-ee51ecf43fc1` found the payment but no match for the Sent-notification completion query. Recovering delivery first, then retrying payroll, preserved the original $1,500 payment. This control and the source support the completion-predicate cause. Its first attempt used the default database path instead of the configured database; that path error supplied no causal evidence and was retained as an investigation setup error. The corrected fresh probe checked dataset identity in the configured read-only database before querying.
+
+The agent proposes one P1 defect, PAY-001, remaining Open and blocking the buggy flow. The existing fixed reference should be tested with the same eight expectations after review. G3 findings review and G4 fixed-execution approval are Pending; no RUN-002 fixed case has run. No product code, test implementation or business oracle changed.

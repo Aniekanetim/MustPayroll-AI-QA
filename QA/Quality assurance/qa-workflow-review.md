@@ -1,6 +1,6 @@
 # QA workflow standards review
 
-**Reviewed: 21 October 2026. Status: recommendations authorized for implementation and incorporated into the workflow and RUN-002 packet v2. The revised execution packet awaits QA review; RUN-002 application testing has not begun.**
+**Reviewed: 21 October 2026. Status: recommendations authorized for implementation and incorporated into the workflow and RUN-002 packet v2. The revised packet was approved after the case briefing; RUN-002 buggy execution is complete. Findings and fixed-retest review are Pending.**
 
 ## Conclusion
 
@@ -77,4 +77,4 @@ The same approach adapts to another testing objective. API and browser identify 
 
 After the research, Aniekan authorized implementation of these recommendations. [The revised workflow and packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) now expose the seven activities, requirement/risk analysis, preparation evidence, continuous control and completion review. Source/build integrity, both test projects' TypeScript checks and exported API inputs were checked without executing the application cases.
 
-The next decision is G1/G2 approval of that concrete packet, authorizing eight buggy-build cases and bounded investigation. Findings review precedes separately approved fixed retesting. RUN-001 evidence remains intact with human review Pending. No application, fixture, script or test-result changes were made by this revision.
+G1/G2 approval followed the conversational case briefing, with a requirement to prevent blind approval. The workflow now requires an informed briefing and scoped decision record at every gate and testing type. The eight buggy cases then executed: 7 Pass / 1 Fail. G3 findings review precedes separately approved fixed retesting. RUN-001 evidence remains intact with human review Pending. The research/workflow revision did not change product code or test implementation. Subsequent RUN-002 buggy results were recorded separately; fixed results remain RUN-001 evidence.

@@ -16,17 +16,25 @@ This attempt uses AI throughout the QA cycle: requirements review, risk selectio
 
 The AI agent carries out the QA work; the QA engineer directs it, reviews evidence and approves decisions throughout. The cycle supports API, UI/functional, usability, performance, accessibility and other testing types. The current payroll results cover only the six UI and two HTTP cases identified below.
 
-Start by telling the agent what testing is needed; it asks when that choice is missing. It analyzes requirements and risks, designs the checks, and prepares scripts, data and the environment for review. After approval it executes, investigates findings, confirms an approved correction and completes the handoff. Progress and changed risks are tracked throughout. These iterative testing activities sit beneath our five human review gates. Human decisions are recorded separately from test outcomes.
+Start by telling the agent what testing is needed; it asks when that choice is missing. It analyzes requirements and risks, designs the checks, and prepares scripts, data and the environment for review. After approval it executes, investigates findings, confirms an approved correction and completes the handoff. Progress and changed risks are tracked throughout. These iterative testing activities sit beneath our five human review gates. Before every approval request, the agent briefs the human on the proposal, rationale, evidence, alternatives, gaps and exact next authorization. A packet link alone is insufficient. Human decisions are recorded separately from test outcomes.
 
 [Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
 
-The starting selection is payroll regression across UI and API. The [standards review](QA/Quality%20assurance/qa-workflow-review.md) informed the revised process. **[RUN-002 packet v2](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) is ready for scope, design and readiness approval; application-test execution has not begun.** It records the eight-case scope, preparation evidence, stop/resume conditions and completion criteria. The same workflow can adapt to another testing objective while retaining progress. Previous RUN-001 results remain agent-executed evidence awaiting human review.
+The starting selection is payroll regression across UI and API. The [standards review](QA/Quality%20assurance/qa-workflow-review.md) informed the revised process. **Aniekan approved [RUN-002 packet v2](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) after the case briefing. Buggy execution is complete: 7 passed / 1 failed. [Findings and fixed-retest review](QA/Quality%20assurance/qa-workflow.md#run-002-findings-and-fixed-retest-proposal) are Pending; fixed execution has not begun for RUN-002.** It records the eight-case scope, preparation evidence, stop/resume conditions and completion criteria. The same workflow can adapt to another testing objective while retaining progress. Previous RUN-001 results remain agent-executed evidence awaiting human review.
 
 ## RUN-001 verified result
 
 **Buggy: 7 passed / 1 failed. Fixed: 8 passed / 0 failed.** These are the same eight cases: six Chromium browser cases and two separately executed HTTP cases. Only TC07 fails in buggy: payroll retry records $3,000 instead of preserving the original $1,500 payment. The same assertion passes in fixed. The Postman collections provide reviewer reproduction; no Postman execution is claimed.
 
 The [defect report](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) now includes the confirmed root cause, proposed fix, evidence and release blockers. This local result does not complete the remaining video and candidate-review steps.
+
+## RUN-002 buggy findings
+
+After approval, Codex executed all eight buggy-build cases on fresh records: six UI cases produced five Pass and TC07 Fail; two separate HTTP cases passed. TC07 preserved the original payment but added another $1,500 payment, raising recorded pay to $3,000. The source and a delivery-first control support the notification-dependent completion error.
+
+[RUN-002 UI results](QA/Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) · [RUN-002 API results](QA/Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) · [Actionable finding](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md#run-002-findings-review)
+
+The agent proposes keeping PAY-001 Open and blocking the buggy flow. Review the findings before authorizing the same eight cases on the existing fixed reference. Prior fixed results above remain RUN-001 evidence, not a RUN-002 retest.
 
 ## Start the applications
 

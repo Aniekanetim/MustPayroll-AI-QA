@@ -1,6 +1,6 @@
 # AI-led QA workflow with human review
 
-**Current status — 21 October 2026:** the QA engineer authorized the standards-informed workflow revision. RUN-002 packet v2 is ready for scope, design and readiness review. Its application-test execution is not yet approved. RUN-001 remains a separate completed execution awaiting human review.
+**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). G3 findings review and the G4 fixed-retest proposal are ready for human review; fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
 
 ## Purpose and responsibilities
 
@@ -64,6 +64,18 @@ A cycle can combine or change testing types. Preserve its current progress and e
 
 G1 and G2 can be reviewed together when the complete packet is available. Before asking for a decision, brief the QA engineer in the conversation on the objective, each proposed check and its expected outcome, why those checks were selected over alternatives, gaps and the exact next work. Link the details as supporting material; do not substitute a link or approval button for the briefing. The QA engineer can challenge, replace or expand the checks before authorizing execution. Approval identifies the packet revision, build, allowed work, reviewer and date. Silence is not approval. Within an approved scope, the agent performs routine preparation, execution, investigation and documentation autonomously.
 
+## Informed approval at every gate
+
+An approval request must enable a decision, rather than merely ask for one. Before presenting it, the agent must:
+
+1. Brief the QA engineer in the conversation on the business objective and exact work or finding being reviewed. Identify its packet revision, build and current state; explain unfamiliar terms.
+2. Explain the proposed decision and its basis: why this scope or response was chosen, the expected outcome, alternatives, supporting evidence, assumptions and unresolved gaps. At G1/G2, cover each proposed case and selection rationale. At G3, explain failures, impact, evidence and confidence in the cause. At G4, explain the correction and how the retest can disprove it. At G5, explain completion criteria, residual risk and the proposed handoff.
+3. State exactly what approval authorizes next and what remains outside it. Supply direct supporting links, but keep the briefing understandable without opening them.
+4. Give the QA engineer room to challenge or revise the proposal. If the briefing is missing or a material question is unresolved, complete or correct it before requesting a decision. Do not infer approval from silence, a question or a request for explanation.
+5. Record the actual reply, reviewer/date, packet revision, briefing/evidence reviewed, conditions and authorized next work. An approval after a case briefing is not a claim that the reviewer manually read every script or repeated the tests.
+
+This safeguard applies to all testing types and all five gates. A scope change or materially different proposal requires a revised briefing at the affected gate; routine actions within an already approved scope do not need new approval.
+
 ## Monitoring, change control and records
 
 During execution, report planned versus completed checks, Pass/Fail/Blocked outcomes, requirement coverage, anomalies and any changed risk. Record unexpected harness or environment errors separately; an error that prevents valid observation is not evidence of a product failure.
@@ -81,7 +93,7 @@ Connect requirements, cases, observations, defects and retests by ID and build. 
 
 ## RUN-002: scope and test-design packet v2
 
-**Decision requested:** approve G1 scope/analysis and G2 design/readiness for the eight buggy-build payroll cases below. This authorizes their execution, bounded investigation and findings report. It does not approve fixed-build retesting, product changes or release.
+**Approved decision:** Aniekan approved G1 scope/analysis and G2 design/readiness after the conversational case briefing, subject to strengthening the workflow against blind approval. The safeguard above is now in place. Approval authorizes the eight buggy-build cases, bounded investigation and findings report. Fixed-build retesting, product changes and release are not authorized by this decision.
 
 ### Objective, sources and risk analysis
 
@@ -129,15 +141,15 @@ The [buggy UI suite](../Quality%20Control/Buggy%20build/Functional%20testing/fun
 
 Readiness checks below were performed by Codex on 21 October 2026. They are preparation evidence, not RUN-002 application-test results or human approval.
 
-| Entry criterion | Preparation evidence | Remaining action |
+| Entry criterion | Preparation evidence | Execution verification |
 | --- | --- | --- |
-| Known product baseline | All files listed in both local build manifests match their hashes; health endpoints report the matching IDs below | Recheck the target at execution start and retain its identity |
-| Inspectable test implementation | Both execution projects pass TypeScript no-emit checking; all seven helper/POM/spec files are byte-identical between builds | QA reviews the [browser spec](../Quality%20Control/Buggy%20build/Functional%20testing/executed_functional_test_cases/test/specs/ui/payroll-ui.spec.ts) and [page objects](../Quality%20Control/Buggy%20build/Functional%20testing/executed_functional_test_cases/test/pages) as part of G2 |
-| Requirements-based assertions | Agent source review confirms TC07 expects one $1,500 payment and the original identities in both builds; adjacent checks map to BR01–BR06 above | QA approves the test oracle |
-| Reproducible API inputs | Both collections parse; every JSON body in each API suite matches an exported request | Use those exact inputs; record the actual execution tool |
-| Isolated data and controlled faults | Helpers create fresh records per case; scripts use separate test databases; one-shot controls distinguish payment failure from delivery failure | Confirm successful setup per case; stop if it fails |
-| Usable runtime | Normal services respond on 4275/4276; isolated test services are configured for 4284/4285 | Before execution check runtime/browser availability and test-port availability |
-| Human execution authorization | v2 prepared; no application cases run for RUN-002 | G1/G2 decision Pending |
+| Known product baseline | All files listed in both local build manifests match their hashes; health endpoints report the matching IDs below | Rebuild and served identity matched the approved buggy baseline; fingerprints retained |
+| Inspectable test implementation | Both execution projects pass TypeScript no-emit checking; all seven helper/POM/spec files are byte-identical between builds | [Browser spec](../Quality%20Control/Buggy%20build/Functional%20testing/executed_functional_test_cases/test/specs/ui/payroll-ui.spec.ts) and [POM](../Quality%20Control/Buggy%20build/Functional%20testing/executed_functional_test_cases/test/pages) remained inspectable and unchanged; human review method was the case briefing, not claimed manual script inspection |
+| Requirements-based assertions | Agent source review confirms TC07 expects one $1,500 payment and the original identities in both builds; adjacent checks map to BR01–BR06 above | Aniekan approved the expected behavior after the briefing; assertions were unchanged |
+| Reproducible API inputs | Both collections parse; every JSON body in each API suite matches an exported request | Exported inputs used by Python HTTP; actual tool recorded, no Postman run claimed |
+| Isolated data and controlled faults | Helpers create fresh records per case; scripts use separate test databases; one-shot controls distinguish payment failure from delivery failure | All eight cases used fresh records and valid setup; controlled faults remained one-shot |
+| Usable runtime | Normal services respond on 4275/4276; isolated test services are configured for 4284/4285 | Chromium launched and isolated service 4284 started normally; normal service 4275 matched the pinned build |
+| Human execution authorization | Aniekan approved packet v2 after the case-selection briefing and required the informed-approval safeguard | Approved for buggy execution; safeguard implemented before starting |
 
 **Pinned application builds:** buggy `mustpayroll-0.3.0-faulty-eb7f01eeae99`; fixed reference `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. Separate source trees and SQLite files prevent one build's actions from changing the other's evidence. The fixed reference is available for a later G4 review, not part of this first execution authorization.
 
@@ -154,7 +166,7 @@ The pay instant is simulated Tuesday 13 October 2026, 09:00 UTC. It covers 5 Oct
 
 ### Progress control and completion criteria
 
-**Current RUN-002 progress: 0/8 cases executed. All eight are Not run.** Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
+**Current RUN-002 progress: 8/8 buggy cases executed; 7 Pass / 1 Fail (TC07), no blocked or unexecuted cases. G3 review Pending; fixed retest Not started.** Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
 
 G3 is ready when each buggy case has an observed outcome or explicit blocker, evidence identifies its inputs/build, and the primary defect report includes reproduction, expected/actual, severity, cause or a marked hypothesis, proposed fix and release blockers. Unresolved cause or invalid evidence remains an investigation gap.
 
@@ -166,6 +178,22 @@ G5 evaluates the complete evidence against BR01–BR06. For a Ready recommendati
 
 This packet excludes performance, usability, accessibility, security and new product-code changes. Those objectives can use the same workflow after their scope and criteria are agreed. Completion of RUN-002 is separate from completing the application: the new Loom and professional application review remain outstanding.
 
+## RUN-002: findings and fixed-retest proposal
+
+**G3 finding:** one P1/release-blocking defect, PAY-001. [Six UI results](../Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) contain five Pass and TC07 Fail. [Two API results](../Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) both passed. All eight ran on fresh records under unchanged expectations; supporting probes are not additional cases.
+
+**Observed failure:** approved pay stayed $1,500. The first attempt saved payment `e2e76454-6e9c-4203-bec4-a59bfe106b88` and a Pending notification. Payroll retry added payment `9ce922f1-a013-4059-bcd6-e8c962ff3f6e`, raising recorded pay to $3,000. This is a business assertion failure corroborated by saved records, not a runner/setup error.
+
+**Cause and confidence:** the buggy completion query requires a Sent notification. At a fresh Paid/Pending checkpoint, read-only SQL found the existing payment while that completion predicate matched nothing. Sending the original notification first and then retrying payroll preserved one payment. Source, state and the control therefore support the cause. The [actionable report](../Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md#run-002-findings-review) retains reproduction, severity, evidence, cause and proposed fix.
+
+**G4 correction proposed for verification:** the existing fixed reference `mustpayroll-0.3.0-fixed-ca7ffbea67ec` checks saved payment identity and enforces employee-period uniqueness. No new product-code implementation is proposed. It must preserve existing payment and notification records while completing pending delivery.
+
+**Why this retest:** confirm TC07 under the same first-payment/delivery-failure/payroll-retry sequence, then run the seven adjacent cases from v2. This checks that the correction prevents the duplicate while preserving approved selection, cut-off/timezone handling, input deduplication, unpaid recovery and notification behavior. Expectations, amounts and case IDs remain unchanged.
+
+**Acceptance:** all eight fixed cases must pass validly; TC07 must retain one $1,500 payment, the original payment/notification IDs, amount and destination, with delivery recovered. Retain the buggy failure separately. Any unexpected result is investigated and reported, not changed into the expected result.
+
+**Review boundary:** accepting G3 means accepting the scoped findings and evidence. G4 approval authorizes only these eight fixed-reference cases and bounded investigation, followed by separate results. It does not authorize product changes, production release or G5 handoff. RUN-001 fixed results remain reference evidence, not a RUN-002 retest.
+
 ## Review history and current decision
 
 | Date / reviewer | Scope | Decision / state |
@@ -176,8 +204,10 @@ This packet excludes performance, usability, accessibility, security and new pro
 | 21 Oct 2026 / Codex | Revision and preparation | Seven activities mapped, readiness checks recorded and packet v2 prepared; no RUN-002 application cases executed |
 | 21 Oct 2026 / Aniekan | RUN-002 G1/G2 approval request | Requested an explanation of the cases and why they were selected; the linked packet alone felt like blind approval. No execution approval given |
 | 21 Oct 2026 / Codex | Case-selection briefing | Added per-case rationale, channel choices, alternatives and coverage limits; business cases and expected results unchanged |
-| Pending / QA engineer | RUN-002 G1/G2 packet v2 with briefing | Review of scope, rationale, oracle and readiness; execution decision Pending |
-| Not started | RUN-002 G3/G4/G5 | Findings, fixed retest and handoff await the preceding evidence and decisions |
+| 21 Oct 2026 / Aniekan | RUN-002 G1/G2 packet v2 with briefing | “Approved, but update the workflow to prevent blind approval.” Approved the eight buggy cases and bounded investigation after reviewing the conversational case/rationale/expected-outcome briefing. Condition implemented before execution; no manual script review or test replay claimed |
+| 21 Oct 2026 / Codex | RUN-002 buggy execution | Done: UI 5 Pass / 1 Fail, API 2 Pass; TC07 duplicated $1,500 into $3,000. Original records and diagnostics retained |
+| Pending / Aniekan | RUN-002 G3 findings and G4 retest proposal | Findings packet prepared; fixed execution not yet authorized |
+| Not started | RUN-002 G5 | Completion/handoff decision awaits reviewed fixed evidence |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.
 

@@ -1,6 +1,6 @@
 # Duplicate payment when payroll is retried after notification failure
 
-**Defect:** PAY-001 · **Priority:** P1 / release blocker · **Status:** reproduced in buggy; corrected reference verified in browser and regression.
+**Defect:** PAY-001 · **Priority:** P1 / release blocker · **Status:** RUN-002 buggy reproduction complete, human findings review Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
 
 ## Bug description
 
@@ -69,3 +69,14 @@ The [fixed completion query](../../../MustPayroll/MustPayroll_fixed/server/payme
 Use the committed payment identified by dataset, employee and period as the completion fact, independently of delivery state. Enforce that identity in storage, reuse its ID on retry, and retain payment-plus-notification-work transactionality. Retry only pending delivery after preserving payment.
 
 Block release if TC07 creates a second payment or changes its identity. Also require payment-failure isolation (TC05), notification-only recovery (TC06) and linked notification creation (TC08). The fixed source is a local reference correction; production bank idempotency and concurrency remain outside the verified scope.
+
+
+## RUN-002 findings review
+
+Aniekan approved the eight-case execution after the case briefing. Codex executed the buggy build on 21 October 2026: **7 passed / 1 failed (TC07)**. [UI evidence](../Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) records original payment `e2e76454-6e9c-4203-bec4-a59bfe106b88` and duplicate `9ce922f1-a013-4059-bcd6-e8c962ff3f6e` in dataset `38b2a7f8-cd84-43a2-99d9-b0f94d59a4c2`. Approved pay remained $1,500; recorded pay became $3,000.
+
+The supporting Paid/Pending probe used fresh dataset `791fc3b4-82ed-4643-9c37-ee51ecf43fc1`. The database was opened read-only: the Sent-notification predicate returned no match, while payment identity matched. Delivery-only recovery followed by payroll retry preserved payment `443d1ab3-158d-4c8a-80ff-3bc061db0a41` and the $1,500 total. This supports the same confirmed cause and proposed fix above; it is not another counted test case.
+
+One supporting probe initially targeted the default database path instead of the running service's configured database and could not open it. No SQL conclusion came from that attempt. A fresh probe verified the correct dataset in the configured database before querying. This investigation setup issue did not affect the eight product-case outcomes.
+
+**Disposition proposed:** keep PAY-001 Open and the buggy flow Not ready. Review this evidence at G3, then authorize the [G4 fixed-reference retest](../../Quality%20assurance/qa-workflow.md#run-002-findings-and-fixed-retest-proposal). No new product-code fix or RUN-002 fixed pass is claimed.

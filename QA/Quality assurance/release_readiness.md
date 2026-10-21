@@ -16,7 +16,7 @@
 
 ## RUN-002 completion review
 
-[Packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) defines entry checks, execution bounds and completion criteria. G1/G2 review is Pending; none of its eight application cases has run. Preparation checks do not renew the release recommendation or approve prior results.
+[Packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) defines entry checks, execution bounds and completion criteria. G1/G2 were approved after the conversational briefing. All eight buggy cases executed: 7 Pass / 1 Fail (TC07), with no blocked cases. The informed-approval safeguard now applies at every gate. G3 findings review and G4 fixed-retest authorization are Pending; prior fixed passes remain RUN-001 evidence.
 
 At completion, account for every planned case and BR01–BR06, retain original failures and separate retests, and give each open defect a disposition. A Ready recommendation requires eight valid fixed-build passes and no unresolved payment-identity/recovery blocker. Any exception remains visible for the human decision. Retain the reusable checks and recovery handoff, and record the UTF-8 harness lesson carried forward from RUN-001. The QA engineer records the actual evidence reviewed and the accepted limits; organizational production-release authority remains separate.
 
