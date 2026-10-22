@@ -1,6 +1,6 @@
-# Project context: recommended structure
+# Project context: structure and implementation
 
-**Researched:** 22 October 2026. **Status:** organization recommended for implementation; the Project Context folder has not yet been created.
+**Researched and implemented:** 22 October 2026. **Status:** the user approved the proposal; [Project Context](../../Project%20Context/README.md) now provides the shared entry point. This document preserves the research and implementation rationale. [DEC-CTX-001](../../Project%20Context/decisions/2026-10-22-shared-project-context.md) records the actual process decision.
 
 ## What industry guidance establishes
 
@@ -82,10 +82,10 @@ Next action: <specific dependent work waiting for the reply>
 
 A plain ticket comment does not by itself notify someone. Because developers currently check Dev Todo/Rework, expose links to unanswered developer questions in the board README's check-in summary, pointing back to the original ticket comment. This is a visibility index, not another ticket status or duplicate conversation.
 
-## Application to this repository
+## Pre-implementation inventory and migration
 
-The existing payroll rules are in `QA/Quality assurance/business_rules.md`; they belong in the shared business context when the structure is implemented. Preserve BR01–BR06 and update all navigation references during that move. Existing accepted scope/criteria, setup/build instructions and API references can be indexed or consolidated from their actual sources. Preserve executed results and prior decisions.
+Before implementation, payroll rules lived under QA. They now have one canonical location at [business/business-rules.md](../../Project%20Context/business/business-rules.md), retaining BR01–BR06 and their existing content. Navigation references were updated. Accepted scope/criteria, setup/build instructions and API references were consolidated from their actual sources. Executed results and prior decisions remain unchanged.
 
-The reviewed tracked repository does not contain a standalone BRD, PRD or supplied Figma design. Index those gaps accurately. Consolidation must identify its source and actual review state rather than claim that missing product/design documents or approvals exist.
+The pre-implementation repository contained no standalone BRD, PRD or supplied Figma design. The new BRD and PRD identify their existing source basis and consolidated state; they are not externally supplied documents or newly granted stakeholder approvals. No Figma handoff or unprovided non-functional thresholds were invented. The index records these remaining source gaps.
 
-Implementation should create the context entry point and available content first, update ticket templates/AGENTS/workflow to read it and record clarification comments, and update the existing hourly check-in prompt to include it. Validate references, requirement-to-ticket/test links, a missing-information walkthrough and unchanged historical outcomes. The recommended structure is not yet implemented by this research step.
+Implementation connects the context index to AGENTS, the existing workflow, both ticket templates and the hourly check-in prompt. Missing/conflicting information is handled on the existing ticket; the board's unanswered-question index gives developers visibility without another status or duplicate conversation. Source revisions and BR/AC IDs are distinct from served build identity. Verification and schedule-update outcomes are recorded in the decision record after checks complete.

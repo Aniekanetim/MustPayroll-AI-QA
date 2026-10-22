@@ -18,7 +18,9 @@ The AI agent carries out the QA work; the QA engineer directs it, reviews eviden
 
 Start by telling the agent what testing is needed; it asks when that choice is missing. It analyzes requirements and risks, designs the checks, and prepares scripts, data and the environment for review. After approval it executes, investigates findings, confirms an approved correction and completes the handoff. Progress and changed risks are tracked throughout. These iterative testing activities sit beneath our five human review gates. Before every approval request, the agent briefs the human on the proposal, rationale, evidence, alternatives, gaps and exact next authorization. A packet link alone is insufficient. Human decisions are recorded separately from test outcomes.
 
-[Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
+[Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Project Context: requirements and references](Project%20Context/README.md) · [Current progress and decisions](unified_project_context.md)
+
+The shared **Project Context** folder answers what the product should do and which sources apply. It contains the business requirements, payroll rules, product acceptance criteria, design reference, technical/setup information and recorded decisions. Existing payroll requirements were consolidated from the agreed local-demo scope; no external PRD or Figma handoff is claimed. The index identifies missing sources and responsible roles. Tickets link the applicable source revision. If a necessary answer is missing, the agent comments on that ticket and waits on affected work; the board's question index makes the comment visible to developers.
 
 Use the [QA task management board](QA%20task%20management%20Board/README.md) to submit new work and follow its tickets. The AI QA checks Ready for QA and Retest; developers check Dev Todo and Rework; completed tickets reach Tested-Ok. Each discovered defect or regression receives its own linked bug ticket. The board README includes ticket templates, check-in instructions and the current scheduling state. Human review remains part of the existing workflow. The board starts empty; completed assessment evidence is preserved separately.
 
@@ -68,7 +70,8 @@ Start with the business rule, follow the reproduction, then compare the same cas
 
 | Review item | Location |
 | --- | --- |
-| Rules, flow and assumptions | [Business rules](QA/Quality%20assurance/business_rules.md) |
+| Shared requirements and references | [Project Context index](Project%20Context/README.md) · [Feature acceptance criteria](Project%20Context/product/PRD.md#acceptance-criteria) |
+| Rules, flow and assumptions | [Business rules](Project%20Context/business/business-rules.md) |
 | Why this failure was selected | [intent.md](QA/Quality%20assurance/intent.md) |
 | AI actions and causal checks | [Investigation](QA/investigation.md) |
 | Buggy browser cases and results | [Suite](QA/Quality%20Control/Buggy%20build/Functional%20testing/functional-test-suite.md) · [Results](QA/Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md) |

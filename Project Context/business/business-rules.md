@@ -1,5 +1,7 @@
 # Payroll business rules
 
+**Owner:** project owner; product responsibility pending a separately named owner. **State:** existing BR01–BR06 baseline, migrated without changing rule content. **Updated:** 22 October 2026. **Applies to:** the 0.3.0 local payroll demo. Record the applicable context revision and application build on each ticket as described in the [context index](../README.md).
+
 ## Context
 
 MustPayroll is a local weekly-payroll demo. An operator records employee earnings, approves or rejects them, then processes a selected pay date. Payment and notification are different operations: delivery failure must not undo or repeat a payment.

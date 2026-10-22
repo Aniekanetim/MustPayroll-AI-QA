@@ -6,6 +6,8 @@
 
 **Ticket intake:** the [QA task management board](../../QA%20task%20management%20Board/README.md) supplies work through five folder statuses at the repository root. The AI QA checks Ready for QA and Retest; developers check Dev Todo and Rework. Build/feature assignments and the separate bug/regression tickets they produce retain their own IDs and records. Tested-Ok contains tickets whose criteria and required human decisions are satisfied. The board selects work; this workflow governs its execution and review.
 
+**Test basis:** start with [Project Context](../../Project%20Context/README.md), then the ticket's applicable business rules, feature acceptance criteria, design reference and technical/setup sources. Record source revisions and BR/AC IDs separately from the target build. The index identifies owners, document states and missing information. For necessary gaps or conflicts, follow the board's [clarification procedure](../../QA%20task%20management%20Board/README.md#clarification-comments-and-developer-visibility): comment on the existing ticket, expose the question to the developer and pause affected checks. Do not infer requirements from the faulty implementation or replace a required human decision with a developer answer.
+
 Apply these same activities and gates from each ticket's recorded checkpoint. Initial testing creates separate linked Dev Todo bug tickets. Developer fixes/refutations return the existing ticket to Retest; a failed original retest goes to Rework, a successful reviewed retest to Tested-Ok, and a newly observed regression gets its own Dev Todo ticket. Keep the parent assignment's blockers and overall completion decision current. Awaiting review or an unchanged dependency does not authorize another run. The [board instructions](../../QA%20task%20management%20Board/README.md#ai-check-in-procedure) define claiming, selection, waiting and check-in reporting; the [implementation plan](task-board-implementation-plan.md) records the approved design.
 
 The agent performs the testing work. The QA engineer directs priorities, checks the reasoning and evidence, and approves the scoped decisions. Human verification can include inspecting requests, records, scripts and assertions; it does not require manually repeating every agent action. Record the review actually performed.
@@ -41,7 +43,7 @@ Activities can overlap and repeat. For example, a failed readiness check returns
 
 Establish the testing objective and types. If they are missing, ask: **“What kind of testing are we doing?”** Reuse a stated choice or existing approval.
 
-Then identify the product flow, source requirements, target build/environment, data, risks, measurable criteria and operating limits. Resolve contradictions before judging behavior. Derive expected results from the agreed requirements, independently of the application's current response.
+Then identify the product flow, source requirements, target build/environment, data, risks, measurable criteria and operating limits. Consult the context index and record the applicable source revisions. Resolve contradictions before judging behavior; if a necessary answer is missing, record a ticket clarification and waiting checkpoint. Continue independent work only within the existing authorization. Derive expected results from the agreed requirements, independently of the application's current response. After a clarification, preserve the answer/source update and return to the affected gate if scope or criteria changed.
 
 The workflow supports functional and non-functional objectives. API and browser are interaction channels; either can support different quality objectives.
 
@@ -134,7 +136,7 @@ Connect requirements, cases, observations, defects and retests by ID and build. 
 
 ### Objective, sources and risk analysis
 
-Verify BR01–BR06 in [business rules](business_rules.md), especially one payment per employee-period after notification delivery fails. Use the role brief as assessment authority and the explicit payroll rules as the product oracle. The transcript informs the workflow; previous results and implementation are reference material, not expected-result sources.
+Verify BR01–BR06 in [business rules](../../Project%20Context/business/business-rules.md), especially one payment per employee-period after notification delivery fails. Use the role brief as assessment authority and the explicit payroll rules as the product oracle. The transcript informs the workflow; previous results and implementation are reference material, not expected-result sources. The rules were moved into shared context after RUN-002; the migration does not change that run's original test basis or assign it new acceptance-criteria IDs.
 
 [Intent](intent.md) ranks three plausible failures: duplicate payment after failed delivery, incorrect weekly cut-off and duplicate earning import. Duplicate payment is investigated deeply because a recovery action could repeat its financial effect. Boundary and duplicate-input cases provide adjacent protection. Likelihood is a reasoned hypothesis; production frequency is unknown.
 

@@ -12,7 +12,7 @@ Use the existing workflow below for all ticket work. Folder placement and develo
 
 ## AI-led QA with human review
 
-Read `unified_project_context.md`, the relevant requirements/evidence and `QA/Quality assurance/qa-workflow.md` before work. Read the ignored `mental_model/continuity.md` for assistant continuity; essential team facts must remain in shared records.
+Read `unified_project_context.md`, `Project Context/README.md`, the relevant requirements/evidence and `QA/Quality assurance/qa-workflow.md` before work. Read the ignored `mental_model/continuity.md` for assistant continuity; essential team facts must remain in shared records.
 
 The user confirmed on 21 October 2026 that the agent performs the QA workflow and the QA engineer reviews and approves it end to end. This applies across functional and non-functional testing types, rather than only payroll automation scripts.
 
@@ -41,6 +41,10 @@ Keep expected results identical between builds. Preserve failures and retests se
 The primary defect report must contain reproduction, expected/actual, severity, confirmed root cause (or a marked hypothesis), evidence, proposed fix and release blockers. AI generation or a reported fix is not a passing test.
 
 ## Context and scope protection
+
+Use [Project Context](Project%20Context/README.md) for shared business, product, design and technical information. The index identifies source owners, states, applicable revisions and known gaps. Acceptance criteria stay in the PRD; BR01–BR06 have one canonical location in `Project Context/business/business-rules.md`. A technical reference describes implementation; it does not override accepted requirements. Record context Git revision, relevant BR/AC IDs and any applicable design handoff in the ticket/test basis, separately from the served build identity. Do not retroactively assign the new AC IDs or context revision to historical executions.
+
+When a necessary answer is missing, inaccessible or contradictory, follow the board's [clarification procedure](QA%20task%20management%20Board/README.md#clarification-comments-and-developer-visibility). Append a concrete question to the existing ticket, identify checked sources/revisions and affected checks, record Waiting on and next action, and link it in the board's unanswered-developer-question index. Keep the ticket in its current folder. Do not invent a requirement, manufacture a defect from uncertainty, repeat the unanswered question or treat a developer response as human execution approval. Continue only independent, already authorized work. On a response, preserve the conversation, resolve the source with its responsible owner, link any canonical update/decision, and resume from the affected checkpoint; changed criteria return to the affected review gate.
 
 After a material requirement clarification, approval, build/flow change, execution, defect update or blocker, update the detailed evidence/review record, shared context, traceability and ignored personal mental model. Shared context must stand alone; the personal mental model is not team authority. Keep deliverables concise and linked from README and directive.
 

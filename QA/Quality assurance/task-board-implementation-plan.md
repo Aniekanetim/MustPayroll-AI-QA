@@ -61,7 +61,7 @@ The original bug can pass its retest while a newly discovered regression remains
 
 If a claimed regression has no established prior passing baseline, record the observed new defect and the uncertainty about regression classification. Do not invent a historical pass or a proven causal link to the fix.
 
-Developer refutations are recorded and routed to Retest as requested. Additional rules for assessing refutations and a future project-context folder are outside this implementation.
+Developer refutations are recorded and routed to Retest as requested. Project-context work was outside the original board implementation; the later [shared-context decision](../../Project%20Context/decisions/2026-10-22-shared-project-context.md) supplies the current source/clarification procedure.
 
 ## 4. Connect board intake to the existing workflow
 
@@ -112,7 +112,7 @@ Implementation creates the board README, five status folders and their Git place
 
 The improvement is complete when the five-folder board and ticket templates are usable, the documented lifecycle checks pass, the manual board check-in follows the existing human-reviewed workflow, and the scheduled check-in has its chosen cadence and confirmed activation state. Until activation, report the board as manually usable and scheduling as not enabled.
 
-The future project-context folder, PRD/BRD/Figma ingestion, extra refutation rules, developer automation, application changes and additional product testing are outside this implementation. Existing completed assessment evidence remains unchanged.
+Project-context organization, PRD/BRD/Figma ingestion, extra refutation rules, developer automation, application changes and additional product testing were outside this original board implementation. The subsequently authorized [Project Context](../../Project%20Context/README.md) adds shared references and ticket clarifications; it does not add product tests or developer automation. Existing completed assessment evidence remains unchanged.
 
 ## Implementation record — 22 October 2026
 

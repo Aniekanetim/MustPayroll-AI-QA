@@ -4,7 +4,7 @@
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
-| Explicit rules and scope | BR01–BR06, weekly boundaries, identity and account/admin assumptions in [business rules](business_rules.md) | Met |
+| Explicit rules and scope | BR01–BR06, weekly boundaries, identity and account/admin assumptions in [business rules](../../Project%20Context/business/business-rules.md) | Met |
 | Prioritized failure | Three alternatives ranked by impact, likelihood and effort in [intent.md](intent.md) | Met |
 | Fresh browser reproduction | Paid + Pending, then duplicate on payroll retry; delivery-first control isolates dependency | Observed |
 | Confirmed root cause and proposed fix | Wrong completion predicate, saved-record probe, corrected payment identity and uniqueness in [report](../Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) | Met |
