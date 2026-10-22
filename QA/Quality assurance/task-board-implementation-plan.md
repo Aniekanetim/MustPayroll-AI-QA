@@ -1,6 +1,6 @@
 # QA task management board: implementation plan
 
-**Prepared:** 22 October 2026. **Stage:** implementation plan prepared; board folders and scheduled check-in are not yet created.
+**Prepared, authorized and implemented:** 22 October 2026. **Stage:** five-folder board, templates, workflow integration and ten routing walkthroughs complete; native hourly check-in ACTIVE. Aniekan authorized implementation and selected hourly check-ins. The [board README](../../QA%20task%20management%20Board/README.md) is the operating reference and records current verification/scheduling state. The steps below preserve the approved implementation design; the completion record follows them.
 
 ## Objective
 
@@ -100,7 +100,7 @@ Check that each live ticket ID appears in only one status folder, references res
 
 ## 6. Configure the native Codex check-in
 
-Use the existing Codex scheduling feature to return to this chat and operate on this repository's local board. Prepare and manually check the prompt first; use the native app tool to create or update the schedule, avoiding duplicate automations. The only scheduling input still needed is the check-in cadence. No cadence or activation is assumed in this planning step.
+Use the existing Codex scheduling feature to return to this chat and operate on this repository's local board. Prepare and manually check the prompt first; use the native app tool to create or update the schedule, avoiding duplicate automations. Aniekan selected every hour on 22 October 2026, using Africa/Lagos (UTC+1). Record activation only after the native app confirms it.
 
 The scheduled prompt will identify the exact repository and five-folder board, direct the QA agent to inspect only its two intake folders, reference the existing workflow, preserve human review boundaries, and summarize meaningful progress or decisions needed. It will not schedule a developer agent or authorize the QA agent to fix product code. Developers use Dev Todo and Rework through their own routine.
 
@@ -113,3 +113,11 @@ Implementation creates the board README, five status folders and their Git place
 The improvement is complete when the five-folder board and ticket templates are usable, the documented lifecycle checks pass, the manual board check-in follows the existing human-reviewed workflow, and the scheduled check-in has its chosen cadence and confirmed activation state. Until activation, report the board as manually usable and scheduling as not enabled.
 
 The future project-context folder, PRD/BRD/Figma ingestion, extra refutation rules, developer automation, application changes and additional product testing are outside this implementation. Existing completed assessment evidence remains unchanged.
+
+## Implementation record — 22 October 2026
+
+Created the board README and exactly five status folders with Git placeholders. The README includes both ticket templates, distinct assignment/defect lifecycles, new regression reporting, developer fix/refutation routing, ownership/waiting rules, movement/link maintenance and the check-in prompt. Updated AGENTS.md, the QA workflow, repository README, directive and shared context with the board entry point. Existing review gates remain in force.
+
+Ten disposable documentation/filesystem walkthroughs passed. They checked routing, repeated rework, preserved history, unique IDs, refreshed links, waiting conditions and an explicit non-payroll objective. A manual check-in found no live intake tickets and changed no board files. These are board-implementation checks, not new product tests or human QA approvals. The board starts empty; completed RUN-001/RUN-002 evidence remains unchanged.
+
+Aniekan selected every hour. After checking for a matching existing automation and verifying the prompt manually, the native Codex tool created **QA board check-in**, ID `qa-board-check-in`, with state **ACTIVE**, returning to this chat. No developer schedule or custom scheduler was created. The first unattended scheduled execution is not yet observed; the first real ticket will use the existing workflow and required human decisions.

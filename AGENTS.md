@@ -1,5 +1,15 @@
 # Working contract
 
+## Ticket-board intake
+
+For QA board check-ins, read [the board instructions](QA%20task%20management%20Board/README.md) and inspect ticket files in `QA task management Board/Ready for QA` and `QA task management Board/Retest`. Developers use Dev Todo and Rework; Tested-Ok holds completed tickets. The folder is the ticket's board status. Keep its ID, contents, dated notes and developer responses through moves; refresh incoming links and never overwrite or duplicate a ticket.
+
+Resume eligible work owned by this QA chat first; otherwise select one actionable unclaimed ticket by priority, creation time and ID. Respect another owner's claim. Read the complete ticket and linked records, then record ownership, workflow checkpoint, next action and any waiting reason. A waiting decision or unchanged blocking dependency is not permission to repeat execution or resend the same unanswered approval request. An empty/nonactionable board requires no file changes or new ticket.
+
+Build/feature assignments and defect tickets are separate. Create each newly discovered defect as a linked Dev Todo ticket. Developer fixes/refutations return the existing bug to Retest. Retest the original failure and run relevant authorized regression: failed original retests go to Rework, successful reviewed tickets to Tested-Ok, and separate regressions become new Dev Todo tickets with the regression basis and originating fix recorded. Keep the parent assignment's blocking findings and overall completion decision distinct from an individual bug's disposition.
+
+Use the existing workflow below for all ticket work. Folder placement and developer fix claims do not authorize execution or bypass human decisions. The schedule authorizes board check-ins, not unreviewed testing, product fixes or developer automation. Preserve the completed RUN-001/RUN-002 evidence; do not seed the board with old work. The board README supplies templates, the full check-in procedure and scheduling state.
+
 ## AI-led QA with human review
 
 Read `unified_project_context.md`, the relevant requirements/evidence and `QA/Quality assurance/qa-workflow.md` before work. Read the ignored `mental_model/continuity.md` for assistant continuity; essential team facts must remain in shared records.
