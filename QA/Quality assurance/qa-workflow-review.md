@@ -1,6 +1,6 @@
 # QA workflow standards review
 
-**Reviewed: 21 October 2026. Status: recommendations authorized for implementation and incorporated into the workflow and RUN-002 packet v2. The revised packet was approved after the case briefing; RUN-002 buggy execution is complete. Findings and fixed-retest review are Pending.**
+**Standards review: 21 October 2026. Execution status updated: 22 October 2026.** Recommendations were authorized and incorporated into the workflow and RUN-002 packet v2. G1/G2 were approved after the case briefing, G3 findings were accepted, and G4 fixed execution was separately authorized and completed. Buggy: 7 Pass / 1 Fail; fixed: 8 Pass / 0 Fail. Human correction confirmation, defect disposition and the G5 handoff decision remain Pending.
 
 ## Conclusion
 
@@ -77,4 +77,6 @@ The same approach adapts to another testing objective. API and browser identify 
 
 After the research, Aniekan authorized implementation of these recommendations. [The revised workflow and packet v2](qa-workflow.md#run-002-scope-and-test-design-packet-v2) now expose the seven activities, requirement/risk analysis, preparation evidence, continuous control and completion review. Source/build integrity, both test projects' TypeScript checks and exported API inputs were checked without executing the application cases.
 
-G1/G2 approval followed the conversational case briefing, with a requirement to prevent blind approval. The workflow now requires an informed briefing and scoped decision record at every gate and testing type. The eight buggy cases then executed: 7 Pass / 1 Fail. G3 findings review precedes separately approved fixed retesting. RUN-001 evidence remains intact with human review Pending. The research/workflow revision did not change product code or test implementation. Subsequent RUN-002 buggy results were recorded separately; fixed results remain RUN-001 evidence.
+G1/G2 approval followed the conversational case briefing, with a requirement to prevent blind approval. The workflow now requires an informed briefing and scoped decision record at every gate and testing type. The eight buggy cases executed: 7 Pass / 1 Fail. Aniekan accepted the G3 findings and separately authorized G4 fixed retesting on 22 October 2026. All eight fixed cases passed. Actual human confirmation checks were not supplied and are not inferred from acceptance. The [completion review and focused confirmation guide](qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) now support the G5 decision.
+
+The research/workflow revision did not change product code or test implementation. Subsequent RUN-002 results are recorded separately from RUN-001, whose evidence and Pending human-review status remain intact. The standards research informs the process; the execution records establish the product outcomes.

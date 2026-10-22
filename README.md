@@ -20,7 +20,7 @@ Start by telling the agent what testing is needed; it asks when that choice is m
 
 [Workflow and current review record](QA/Quality%20assurance/qa-workflow.md) · [Shared project context](unified_project_context.md)
 
-The starting selection is payroll regression across UI and API. The [standards review](QA/Quality%20assurance/qa-workflow-review.md) informed the revised process. **Aniekan approved [RUN-002 packet v2](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) after the case briefing. Buggy execution is complete: 7 passed / 1 failed. Aniekan accepted the G3 findings; specific human confirmation observations were not supplied. [The separate G4 fixed-execution plan](QA/Quality%20assurance/qa-workflow.md#g4-fixed-reference-execution-packet-v1) is ready for review; the combined approval request remains withdrawn. Fixed execution has not begun or been authorized for RUN-002.** It records the eight-case scope, preparation evidence, stop/resume conditions and completion criteria. The same workflow can adapt to another testing objective while retaining progress. Previous RUN-001 results remain agent-executed evidence awaiting human review.
+The starting selection is payroll regression across UI and API. The [standards review](QA/Quality%20assurance/qa-workflow-review.md) informed the revised process. **Aniekan approved [RUN-002 packet v2](QA/Quality%20assurance/qa-workflow.md#run-002-scope-and-test-design-packet-v2) after the case briefing, accepted G3 findings and separately authorized G4 on 22 October 2026. Both RUN-002 executions are complete: buggy 7 passed / 1 failed; fixed 8 passed. [Human correction confirmation and local handoff review](QA/Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) are Pending; no human manual verification or release approval is inferred.** The workflow records the eight-case scope, preparation evidence, execution bounds and completion criteria. It can adapt to another testing objective while retaining progress. Previous RUN-001 results remain agent-executed evidence awaiting human review.
 
 ## RUN-001 verified result
 
@@ -28,13 +28,15 @@ The starting selection is payroll regression across UI and API. The [standards r
 
 The [defect report](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) now includes the confirmed root cause, proposed fix, evidence and release blockers. This local result does not complete the remaining video and candidate-review steps.
 
-## RUN-002 buggy findings
+## RUN-002 comparison
 
 After approval, Codex executed all eight buggy-build cases on fresh records: six UI cases produced five Pass and TC07 Fail; two separate HTTP cases passed. TC07 preserved the original payment but added another $1,500 payment, raising recorded pay to $3,000. The source and a delivery-first control support the notification-dependent completion error.
 
 [RUN-002 UI results](QA/Quality%20Control/Buggy%20build/Functional%20testing/functional-testing-results.md#run-002) · [RUN-002 API results](QA/Quality%20Control/Buggy%20build/API%20testing/api-testing-results.md#run-002) · [Actionable finding](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md#run-002-findings-review)
 
-The agent proposes keeping PAY-001 Open and blocking the buggy flow. Review the findings before authorizing the same eight cases on the existing fixed reference. Prior fixed results above remain RUN-001 evidence, not a RUN-002 retest.
+The authorized fixed run on 22 October 2026 passed all eight cases: six UI and two HTTP. TC07 retained one $1,500 payment, the original payment/notification IDs and destination, and recovered delivery. [Fresh fixed UI evidence](QA/Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) and [fixed API evidence](QA/Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md#run-002) are separate from RUN-001.
+
+The agent recommends Ready with known limitations for the fixed sequential local flow and Not ready for the buggy control. PAY-001 stays Open pending human confirmation/disposition. Follow the [focused correction-confirmation guide](QA/Quality%20assurance/qa-workflow.md#qa-confirmation-guide-corrected-payroll-retry), then return observations and a local-handoff decision. New Loom/professional-application review remain outside this completed test run.
 
 ## Start the applications
 

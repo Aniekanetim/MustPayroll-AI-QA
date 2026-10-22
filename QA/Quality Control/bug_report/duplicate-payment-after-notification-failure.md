@@ -1,6 +1,6 @@
 # Duplicate payment when payroll is retried after notification failure
 
-**Defect:** PAY-001 · **Proposed severity:** High (duplicate payment record) · **Proposed priority:** P1 / release blocker · **Status:** Open; RUN-002 agent reproduction complete, G3 findings accepted by Aniekan; specific human confirmation observations unrecorded. G4 correction verification Pending. Fixed-reference verification below is RUN-001 evidence; RUN-002 fixed retest has not started.
+**Defect:** PAY-001 · **Proposed severity:** High (duplicate payment record) · **Proposed priority:** P1 / release blocker · **Status:** Open; RUN-002 agent reproduction complete, G3 findings accepted by Aniekan; specific human confirmation observations unrecorded. G4 automated correction verification passed all eight fixed cases; human correction confirmation and closure decision Pending. RUN-001 and RUN-002 evidence are identified separately below.
 
 ## Bug description
 
@@ -83,4 +83,13 @@ The supporting Paid/Pending probe used fresh dataset `791fc3b4-82ed-4643-9c37-ee
 
 One supporting probe initially targeted the default database path instead of the running service's configured database and could not open it. No SQL conclusion came from that attempt. A fresh probe verified the correct dataset in the configured database before querying. This investigation setup issue did not affect the eight product-case outcomes.
 
-**Disposition proposed:** keep PAY-001 Open and the buggy flow Not ready. Review this evidence at G3, then authorize the [G4 fixed-reference retest](../../Quality%20assurance/qa-workflow.md#run-002-findings-and-fixed-retest-proposal). No new product-code fix or RUN-002 fixed pass is claimed.
+**Disposition at findings review:** keep PAY-001 Open and the buggy flow Not ready. G3 acceptance and separate G4 authorization were recorded later in [the workflow](../../Quality%20assurance/qa-workflow.md#review-history-and-current-decision). The completed fixed retest is recorded below; this findings checkpoint itself was not proof of correction.
+
+
+## RUN-002 correction verification — 22 October 2026
+
+Aniekan separately authorized the G4 eight-case fixed plan. Codex executed six Chromium POM cases and two Python HTTP cases with the same expectations used on buggy: **8 passed / 0 failed**. No runner retries, skips or errors; no test/product changes. [UI results](../Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) and [API results](../Fixed%20build/API%20testing/api-testing-results.md#run-002) preserve the fresh observations.
+
+TC07 used dataset `59464532-4593-4286-a629-f24a78390da6`. Payment `c3766df6-d985-4bbe-8c95-a275bb2126d9` remained the single $1,500 payment after payroll retry. Its amount and Meridian Bank · •••• 4821 destination were unchanged. Notification `dc047b2e-f08a-489b-872d-e68517951183` retained its identity and changed Pending to Sent. This contrasts with the retained buggy second-payment evidence under the same oracle.
+
+**Current disposition:** automated correction verification Passed for fixed build `mustpayroll-0.3.0-fixed-ca7ffbea67ec`; report Open pending human confirmation/disposition. The intentionally buggy build still reproduces the defect. Use the [human correction-confirmation guide](../../Quality%20assurance/qa-workflow.md#qa-confirmation-guide-corrected-payroll-retry), then return actual observations and any explicitly authorized closure/handoff decision. Agent passes do not constitute human approval.

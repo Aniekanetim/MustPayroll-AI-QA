@@ -1,6 +1,6 @@
 # AI-led QA workflow with human review
 
-**Current status — 21 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. Aniekan has accepted the G3 findings and asked to continue. Specific human confirmation steps/observations were not included in that reply and are not invented. G4 fixed-execution packet v1 is ready for its separate decision. Fixed execution and G5 handoff are not approved. RUN-001 remains historical evidence awaiting human review.
+**Current status — 22 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. Aniekan has accepted the G3 findings and asked to continue. Specific human confirmation steps/observations were not included in that reply and are not invented. On 22 October 2026, Aniekan replied “Authorized” to the separate eight-case G4 briefing. Fixed execution is complete: 8 Pass / 0 Fail. TC07 retained the original payment, destination and notification identity while delivery recovered. G5 human confirmation/handoff and defect closure remain unapproved. RUN-001 remains historical evidence awaiting human review.
 
 ## Purpose and responsibilities
 
@@ -199,7 +199,7 @@ The pay instant is simulated Tuesday 13 October 2026, 09:00 UTC. It covers 5 Oct
 
 ### Progress control and completion criteria
 
-**Current RUN-002 progress: 8/8 buggy cases executed; 7 Pass / 1 Fail (TC07), no blocked or unexecuted cases. G3 findings Accepted; specific human confirmation observations unrecorded; fixed retest Not started.** Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
+**Current RUN-002 progress:** buggy 8/8 executed, 7 Pass / 1 Fail (TC07); fixed 8/8 executed, 8 Pass / 0 Fail. No blocked/skipped cases or runner retries. G3 findings Accepted and G4 execution Authorized/completed; specific human confirmation observations and G5 handoff/closure decision remain outstanding. Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
 
 G3 is ready when each buggy case has an observed outcome or explicit blocker, evidence identifies its inputs/build, and the primary defect report includes reproduction, expected/actual, severity, cause or a marked hypothesis, proposed fix and release blockers. Unresolved cause or invalid evidence remains an investigation gap.
 
@@ -213,7 +213,7 @@ This packet excludes performance, usability, accessibility, security and new pro
 
 ## RUN-002: findings and fixed-retest proposal
 
-**Current stage: G3 accepted; G4 execution approval Pending.** Aniekan replied “accepted. continue” after receiving the focused confirmation guide. Record that as the findings decision; the reply does not specify his checks, observations or payment references, so those confirmation details remain unrecorded. No personal manual reproduction or source check is inferred. The earlier combined request remains withdrawn; G4 now has its own execution packet below.
+**Current stage: G3 accepted; G4 execution completed after authorization; G5 human confirmation and handoff review Pending.** Aniekan replied “accepted. continue” after receiving the focused confirmation guide. Record that as the findings decision; the reply does not specify his checks, observations or payment references, so those confirmation details remain unrecorded. No personal manual reproduction or source check is inferred. The earlier combined request remains withdrawn; G4 now has its own execution packet below.
 
 ### Decision 1: review the finding and proposed correction
 
@@ -306,7 +306,7 @@ No result or confirmation is inferred until you return. A findings decision does
 
 ### G4 fixed-reference execution packet v1
 
-**Decision requested:** authorize the eight fixed-reference cases listed below and bounded investigation. G3 acceptance is already recorded; this is not a request to accept it again.
+**Authorized on 22 October 2026:** Aniekan replied “Authorized” after the final-response G4 briefing itemized every case, required result, rationale, method and limits. Scope: the eight fixed-reference cases below and bounded investigation. This is execution authorization, not a human test result, defect closure or G5 approval.
 
 Target: existing fixed build **mustpayroll-0.3.0-fixed-ca7ffbea67ec**. The correction uses saved payment identity and an employee-period uniqueness constraint. No new product-code implementation is proposed.
 
@@ -329,7 +329,75 @@ Use fresh records, the same amounts and expected outcomes as buggy, one Chromium
 
 This set combines the defect confirmation (TC07) with adjacent regression: eligibility, weekly selection, input duplication, failed-payment recovery and delivery. It does not add concurrency, crash, live-bank/provider, performance, usability, accessibility or security coverage.
 
-**G4 approval would authorize:** these eight fixed-reference cases and bounded investigation only, followed by observed results for human review. All eight must pass validly to support the scoped readiness recommendation; TC07 must preserve the original $1,500 payment, destination and notification identity while recovering delivery. Approval does not authorize product-code changes, production release, automatic defect closure or G5 handoff. G3 has its own recorded acceptance; fixed execution remains Pending until this separate proposal is authorized. Complete the G3 confirmation record with whatever human checks/observations are supplied; do not manufacture them from the acceptance.
+**Authorized G4 scope:** these eight fixed-reference cases and bounded investigation only, followed by observed results for human review. All eight must pass validly to support the scoped readiness recommendation; TC07 must preserve the original $1,500 payment, destination and notification identity while recovering delivery. Authorization does not cover product-code changes, production release, automatic defect closure or G5 handoff. G3 has its own recorded acceptance and G4 execution was separately Authorized. The run completed with eight observed fixed passes; the linked RUN-002 records are separate from RUN-001. Complete the G3 confirmation record with whatever human checks/observations are supplied; do not manufacture them from the acceptance.
+
+## RUN-002: completion review and human correction confirmation
+
+**Agent result — 22 October 2026, Africa/Lagos:** buggy **7 Pass / 1 Fail**; fixed **8 Pass / 0 Fail** under the same expectations. Six UI and two direct-HTTP cases ran per build; setup/probes are not extra cases. Postman itself was not executed.
+
+| Case | Buggy | Fixed | Observed comparison |
+| --- | --- | --- | --- |
+| TC01 | Pass | Pass | Approved-only payroll $4,350; excluded records unpaid |
+| TC02 | Pass | Pass | $400 each adjacent week; correct opening/closing allocation |
+| TC03 | Pass | Pass | $100 at opening selected after offset conversion; earlier $200 excluded |
+| TC04 | Pass | Pass | Earning ID retained once; one $1,500 payment |
+| TC05 | Pass | Pass | Failed payment creates no payment/notification; retry pays once |
+| TC06 | Pass | Pass | Delivery-only recovery preserves payment and notification |
+| TC07 | Fail | Pass | Buggy reaches $3,000; fixed preserves original $1,500 payment and linked notification |
+| TC08 | Pass | Pass | One Paid payment and linked Sent notification; payment commits first |
+
+[Fixed UI evidence](../Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md#run-002): dataset `59464532-4593-4286-a629-f24a78390da6`, retained payment `c3766df6-d985-4bbe-8c95-a275bb2126d9`, retained notification `dc047b2e-f08a-489b-872d-e68517951183`, unchanged Meridian Bank · •••• 4821 destination; notification Pending to Sent. [Fixed API evidence](../Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md#run-002) records the two fresh responses.
+
+### Agent recommendation and decision boundary
+
+The fixed sequential local payroll flow meets BR01–BR06 within the eight-case scope: **Ready with known limitations**. The intentionally buggy control remains **Not ready**. PAY-001 has passed automated correction verification; the report stays Open pending human confirmation and a recorded disposition.
+
+**Proposed G5 decision:** accept the local QA handoff as Ready with known limitations and mark PAY-001 Verified fixed for build `mustpayroll-0.3.0-fixed-ca7ffbea67ec`, once human correction confirmation supports that disposition. Keep the deliberately buggy build and its failed result as the reproducible control. This proposal is not yet approved; the report remains Open.
+
+Confirm the corrected recovery below, inspect the before/after results and return observations plus a scoped G5 decision: approve that handoff/disposition, approve with specified limits/changes, reject, request investigation or report unable to confirm. An unexpected payment, changed reference/destination or failed recovery warrants investigation rather than acceptance. State any defect disposition explicitly; execution authorization or agent passes alone do not close a defect. Approval would authorize recording the scoped review/disposition and publishing the updated local handoff; it would not authorize production release or complete the broader assessment.
+
+Limits: real banks/delivery, concurrent workers, process crashes, authentication/account changes and additional browsers remain unverified. The broader assessment is incomplete: the new Loom and professional-application review are outstanding. The weighted rubric/rejection reason was not supplied. A local QA handoff decision does not complete the entire assessment.
+
+### QA confirmation guide: corrected payroll retry
+
+Use **http://127.0.0.1:4276**, build **mustpayroll-0.3.0-fixed-ca7ffbea67ec**, and fresh records. This focused check does not require replaying all eight cases. Do not reset/reuse the agent's failed or passing datasets.
+
+**Preparation only:** this PowerShell block checks the build, creates Amara Approved earnings of $1,500 and arms one delivery failure. It does not process payroll.
+
+~~~powershell
+$reviewBaseUrl = 'http://127.0.0.1:4276'
+$reviewHealth = Invoke-RestMethod -ErrorAction Stop -Method Get -Uri "$reviewBaseUrl/api/health"
+if ($reviewHealth.build.id -ne 'mustpayroll-0.3.0-fixed-ca7ffbea67ec') {
+    throw 'The running build does not match the fixed reference.'
+}
+$reviewRecords = Invoke-RestMethod -ErrorAction Stop -Method Post -Uri "$reviewBaseUrl/api/payroll-datasets" -ContentType 'application/json' -Body '{"testDataPreset":"oneApprovedEarning"}'
+$reviewDatasetId = $reviewRecords.payrollDatasetId
+Invoke-RestMethod -ErrorAction Stop -Method Post -Uri "$reviewBaseUrl/api/payroll-datasets/$reviewDatasetId/test-controls/next-failure" -ContentType 'application/json' -Body '{"failureType":"notificationDelivery"}' | Out-Null
+Write-Output "$reviewBaseUrl/pay-runs?payrollDatasetId=$reviewDatasetId"
+~~~
+
+**Browser confirmation:**
+
+1. Open the printed normal web address. In Pay runs select **13 October 2026**. Confirm Approved pay **$1,500**, Recorded pay **$0**, and period **5 October 00:00 included → 12 October 00:00 excluded**. The Tuesday 09:00 UTC instant is simulated.
+2. Select **Pay on Tuesday 09:00 UTC** and confirm. Open Amara's receipt in Payments; note its reference, $1,500 amount and masked destination. In Notifications confirm one linked Pending notification. If this Paid/Pending checkpoint is absent, report it before continuing.
+3. Return to Pay runs with the same date. Select **Retry pay run** and confirm.
+4. Confirm Recorded pay remains **$1,500**, one Paid payment remains, and the receipt has the same reference, amount and destination. The linked notification should be **Sent**, with no second payment.
+5. Compare your observations with the RUN-002 results. A different outcome is an investigation item; do not align it with the report by assumption.
+
+**Optional read-only ID corroboration:** to independently inspect notification IDs, run this GET after step 2 and retain the output. Run it again after the browser retry and compare the original IDs, amount and destination. It does not process/retry anything.
+
+~~~powershell
+$reviewStateUrl = "$reviewBaseUrl/api/payroll-datasets/" + $reviewDatasetId + '?scheduledPayRunAt=2026-10-13T09%3A00%3A00.000Z'
+$reviewSnapshot = Invoke-RestMethod -ErrorAction Stop -Method Get -Uri $reviewStateUrl
+$reviewSnapshot.payments | Select-Object paymentId, amountCents, bank, accountEnding
+$reviewSnapshot.notifications | Select-Object notificationId, paymentId, deliveryStatus
+~~~
+
+Original payment/notification IDs and destination must remain; only delivery changes from pending to sent. If you inspect the published automated checkpoints instead, record that review method.
+
+**Return notes:** build/dataset/pay date, first/retry totals/payment count/reference, notification outcome, checks/evidence reviewed, uncertainty and local-handoff decision. Explicitly name any defect disposition you authorize for the fixed reference. Screenshots are optional. Specific G3 observations have not been supplied; add them if available rather than having the agent infer them.
+
+No human result, closure or handoff approval is recorded until you return. Retain the intentionally faulty build and original failure evidence.
 
 ## Review history and current decision
 
@@ -348,8 +416,9 @@ This set combines the defect confirmation (TC07) with adjacent regression: eligi
 | 21 Oct 2026 / Aniekan | G3 confirmation method | Requested time to personally confirm the defect, cause, classification and proposed correction; required the workflow to provide clear confirmation steps before a decision |
 | 21 Oct 2026 / Aniekan | RUN-002 G3 findings decision | “accepted. continue” — findings decision Accepted. Specific confirmation method/observations not supplied; not recorded as personal manual reproduction or source inspection |
 | 21 Oct 2026 / Codex | G4 preparation | Pinned fixed source/runtime and served identity verified; seven test/POM/helper files match; no fixed cases executed |
-| Pending / Aniekan | RUN-002 G4 execution packet v1 | Separate eight-case execution decision prepared with case/action/result/rationale and limits; execution Not started |
-| Not started | RUN-002 G5 | Completion/handoff decision awaits reviewed fixed evidence |
+| 22 Oct 2026 / Aniekan | RUN-002 G4 execution packet v1 | “Authorized” following the complete final-response eight-case briefing. Authorizes fixed execution/bounded investigation only; not closure, production release or handoff |
+| 22 Oct 2026 / Codex | G4 execution | Done: six UI and two direct-HTTP cases passed once on fresh records; same spec/expectations as buggy; original payment/destination/notification identities retained in TC07 |
+| Pending / Aniekan | RUN-002 G5 confirmation and handoff | Results and focused confirmation instructions prepared; human observations, scoped handoff decision and defect disposition not yet recorded |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.
 

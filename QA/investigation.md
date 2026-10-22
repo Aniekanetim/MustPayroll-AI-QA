@@ -1,5 +1,7 @@
 # AI-led investigation record
 
+**Current status — 22 October 2026:** RUN-002 is complete: buggy 7 Pass / 1 Fail; fixed 8 Pass / 0 Fail after separate G4 authorization. [The latest comparison](#run-002-fixed-execution-and-final-comparison--22-october-2026) records the corrected retry. Human correction confirmation, defect disposition and G5 handoff remain Pending. The sections below preserve chronological checkpoints; a Pending status in an earlier entry describes that time, not the current state.
+
 ## Question and sources
 
 Can a payroll retry recover notification failure without paying an employee again? BR04 and BR06 require one employee-period payment and recoverable notification work. The supplied MUST role brief establishes the assessment requirements. The transcript explains the AI-led workflow; the previous MustPayroll supplies reusable application/page-object code. No previous result counts as evidence of this attempt.
@@ -118,3 +120,21 @@ Codex updated G3 and added the focused PAY-001 guide: fresh-data/controlled-fail
 Aniekan replied “accepted. continue” after the focused confirmation guide. The G3 findings decision is recorded as Accepted. The reply contains no specific confirmation method, observations or references; no personal manual reproduction, source review or control sequence is invented.
 
 Codex prepared G4 execution packet v1 without running fixed cases. Read-only checks matched every fixed source/runtime manifest file and its served identity on 4276: mustpayroll-0.3.0-fixed-ca7ffbea67ec. All seven helper/POM/spec files match across execution projects. The packet itemizes all eight cases, unchanged expected results, selection rationale, tools, isolation and acceptance criteria. Fixed execution requires its separate informed authorization; G5 and defect closure remain unapproved.
+
+
+## G4 authorization and execution start — 22 October 2026
+
+Aniekan replied “Authorized” to the separate G4 final-response briefing. It listed all eight fixed cases, required outcomes, selection rationale, target build, methods, isolation and exclusions. Codex is authorized to execute that plan and bounded investigation; this does not approve defect closure, release or G5 handoff. G3 acceptance is preserved, but specific human confirmation observations remain unrecorded.
+
+The run starts by preserving RUN-001 fixed diagnostics and checking the approved build before fresh-record execution. No expected results or test code will be changed to match the application.
+
+
+## RUN-002 fixed execution and final comparison — 22 October 2026
+
+Following the explicit G4 authorization, Codex preserved RUN-001 fixed diagnostics, checked pinned source/runtime hashes and served identity, then executed the unchanged POM cases once. UTC interval 2026-10-21T23:30:43.867Z → 2026-10-21T23:31:21.690Z corresponds to **22 October, Africa/Lagos**. All six UI cases passed with one worker, zero retries/skips and no runner errors. Python HTTP separately passed TC03/TC04 using exported Postman bodies; Postman was not executed.
+
+Fixed TC07 retained payment `c3766df6-d985-4bbe-8c95-a275bb2126d9`, notification `dc047b2e-f08a-489b-872d-e68517951183`, the $1,500 amount and original destination in dataset `59464532-4593-4286-a629-f24a78390da6`. The captured payment array and browser receipt were unchanged apart from notification state Pending to Sent; no second payment-commit event occurred. All subsequent TC07 assertions ran and passed.
+
+**RUN-002 comparison:** buggy 7 Pass / 1 Fail (TC07), fixed 8 Pass / 0 Fail. The source/spec expectations were unchanged; old failures remain separate. Fresh [fixed UI](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) and [API](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md#run-002) records contain dates, IDs and fingerprints. No product or test code changed.
+
+The agent recommends Ready with known limitations for the fixed sequential local scope, Not ready for the buggy control. The defect report remains Open pending human confirmation/disposition. [The completion packet](Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) provides focused manual steps and an itemized comparison; those guide steps were not executed or claimed as human work. G5/human closure and the new assessment video/application review are outstanding.
