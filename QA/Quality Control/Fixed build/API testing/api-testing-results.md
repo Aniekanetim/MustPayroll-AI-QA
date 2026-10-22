@@ -92,4 +92,4 @@ These selected fields were read from successful HTTP responses; they are observa
 }
 ~~~
 
-Collection SHA-256: `ce85376fe65d99a30851908ab2840dfa855f82420724a7e4000682baa8576827`. Supporting setup/probes do not add cases. Human results review and final handoff approval remain separate.
+Collection SHA-256: `ce85376fe65d99a30851908ab2840dfa855f82420724a7e4000682baa8576827`. Supporting setup/probes do not add cases. Aniekan subsequently replied “Verified!” after the G5 briefing; correction confirmation and the accepted local handoff are recorded separately in the [review record](../../../Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation). These API observations remain agent-executed results, not a claim of human Postman execution.

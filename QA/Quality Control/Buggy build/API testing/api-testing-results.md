@@ -90,4 +90,4 @@ These selected fields were read from successful HTTP responses; they are observa
 }
 ~~~
 
-Collection SHA-256: `47b6c49a1c8a13df8ea3ff8d13ff6ca9b9d7df652daaf97f6d17b238ebf5b296`. Supporting requests and causal probes do not add test cases. G3 findings were subsequently accepted. The [separate RUN-002 fixed API retest](../../Fixed%20build/API%20testing/api-testing-results.md#run-002) passed both cases; G5 human review remains Pending.
+Collection SHA-256: `47b6c49a1c8a13df8ea3ff8d13ff6ca9b9d7df652daaf97f6d17b238ebf5b296`. Supporting requests and causal probes do not add test cases. G3 findings were subsequently accepted. The [separate RUN-002 fixed API retest](../../Fixed%20build/API%20testing/api-testing-results.md#run-002) passed both cases. Aniekan later replied “Verified!” after the G5 briefing; the [review record](../../../Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) records the correction confirmation and accepted local handoff separately from these agent-executed results.

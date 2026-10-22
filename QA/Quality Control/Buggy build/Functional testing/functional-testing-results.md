@@ -93,7 +93,7 @@ The first migrated run had corrupted expected punctuation in the test file. It i
 
 ## RUN-002
 
-**Authorization:** Aniekan approved packet v2 after the case/rationale/expected-outcome briefing, with the informed-approval safeguard implemented before execution. **Executor:** Codex. G3 findings were subsequently accepted; specific human confirmation observations remain unrecorded. The [separate fixed retest](../../Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) passed all six UI cases. G5 human review remains Pending.
+**Authorization:** Aniekan approved packet v2 after the case/rationale/expected-outcome briefing, with the informed-approval safeguard implemented before execution. **Executor:** Codex. G3 findings were subsequently accepted. The [separate fixed retest](../../Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) passed all six UI cases. Aniekan later replied “Verified!” after the G5 briefing; correction confirmation and local handoff are recorded in the [review record](../../../Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation). The buggy TC07 failure is retained.
 
 **Executed:** 2026-10-21T21:21:47.989Z → 2026-10-21T21:22:38.361Z · **Build:** `mustpayroll-0.3.0-faulty-eb7f01eeae99` · **Result:** 5 passed / 1 failed (TC07).
 

@@ -81,7 +81,7 @@ The first migrated run had corrupted expected punctuation in the test file. It i
 
 ## RUN-002
 
-**Authorization:** Aniekan replied **Authorized** to G4 packet v1 on **22 October 2026** after the itemized final-response briefing. **Executor:** Codex. Human correction confirmation, closure and G5 handoff decisions remain outstanding.
+**Authorization:** Aniekan replied **Authorized** to G4 packet v1 on **22 October 2026** after the itemized final-response briefing. **Executor:** Codex. He subsequently replied **“Verified!”** after the G5 results and confirmation instructions. The [review record](../../../Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) records correction confirmation, the accepted local handoff and PAY-001 Verified fixed for the pinned fixed build; his verification method and detailed observations were not supplied.
 
 **Local execution date:** 22 October 2026, Africa/Lagos (UTC+01:00). **UTC interval:** 2026-10-21T23:30:43.867Z → 2026-10-21T23:31:21.690Z. The UTC date is 21 October because the run occurred after midnight in Lagos.
 
@@ -118,4 +118,4 @@ The saved payment array was unchanged. The browser receipt retained its referenc
 - Test-source baseline: commit `d54a4db744eb8a431ef297b1aef731971e007e77`; execution-time edits affected documentation only.
 - [RUN-002 buggy evidence](../../Buggy%20build/Functional%20testing/functional-testing-results.md#run-002): TC07 added a second payment and reached $3,000 under the same expectation.
 - [RUN-002 fixed API results](../API%20testing/api-testing-results.md#run-002): both passed. Combined fixed result: **8 passed / 0 failed**.
-- RUN-001 and RUN-002 diagnostics are archived separately in ignored local data. These are automated observations, not a claim of human execution or closure approval.
+- RUN-001 and RUN-002 diagnostics are archived separately in ignored local data. These are automated observations; the separate G5 record retains the actual human confirmation and scoped disposition without attributing agent execution to the human.

@@ -1,6 +1,6 @@
 # AI-led investigation record
 
-**Current status — 22 October 2026:** RUN-002 is complete: buggy 7 Pass / 1 Fail; fixed 8 Pass / 0 Fail after separate G4 authorization. [The latest comparison](#run-002-fixed-execution-and-final-comparison--22-october-2026) records the corrected retry. Human correction confirmation, defect disposition and G5 handoff remain Pending. The sections below preserve chronological checkpoints; a Pending status in an earlier entry describes that time, not the current state.
+**Current status — 22 October 2026:** RUN-002 is complete: buggy 7 Pass / 1 Fail; fixed 8 Pass / 0 Fail after separate G4 authorization. [The latest comparison](#run-002-fixed-execution-and-final-comparison--22-october-2026) records the corrected retry. Aniekan subsequently replied “Verified!” after the G5 briefing: correction confirmed, PAY-001 Verified fixed for the pinned fixed build, and local handoff accepted as Ready with known limitations. The sections below preserve chronological checkpoints; a Pending status in an earlier entry describes that time, not the current state.
 
 ## Question and sources
 
@@ -138,3 +138,9 @@ Fixed TC07 retained payment `c3766df6-d985-4bbe-8c95-a275bb2126d9`, notification
 **RUN-002 comparison:** buggy 7 Pass / 1 Fail (TC07), fixed 8 Pass / 0 Fail. The source/spec expectations were unchanged; old failures remain separate. Fresh [fixed UI](Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) and [API](Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md#run-002) records contain dates, IDs and fingerprints. No product or test code changed.
 
 The agent recommends Ready with known limitations for the fixed sequential local scope, Not ready for the buggy control. The defect report remains Open pending human confirmation/disposition. [The completion packet](Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) provides focused manual steps and an itemized comparison; those guide steps were not executed or claimed as human work. G5/human closure and the new assessment video/application review are outstanding.
+
+## Human correction confirmation and local handoff — 22 October 2026
+
+After the self-contained G5 results, fresh-data confirmation instructions, limits and proposed handoff/disposition, Aniekan replied **“Verified!”** The response confirms the correction and supports recording the proposed local handoff as Ready with known limitations and PAY-001 as Verified fixed for `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. It does not identify his verification method, dataset, payment references or individual observations; none are invented. The earlier Open/Pending entry above is retained as the pre-decision checkpoint.
+
+Codex recorded the decision across the workflow, defect report, readiness checklist, directive and result-review metadata. No product or test code changed, no new tests ran, and the recorded automated outcomes remain buggy 7 Pass / 1 Fail and fixed 8 Pass / 0 Fail. Preserve the intentionally buggy control and its failure. Production release, the new Loom, professional application-material review and acceptance of a second application remain outside this local handoff.

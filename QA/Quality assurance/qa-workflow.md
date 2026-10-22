@@ -1,6 +1,6 @@
 # AI-led QA workflow with human review
 
-**Current status — 22 October 2026:** Aniekan approved RUN-002 packet v2 after the eight-case briefing and required a safeguard against blind approval. G1/G2 are Approved. Buggy-build execution is complete: 7 passed / 1 failed (TC07). The combined G3/G4 request was returned for clearer briefing and withdrawn. Aniekan has accepted the G3 findings and asked to continue. Specific human confirmation steps/observations were not included in that reply and are not invented. On 22 October 2026, Aniekan replied “Authorized” to the separate eight-case G4 briefing. Fixed execution is complete: 8 Pass / 0 Fail. TC07 retained the original payment, destination and notification identity while delivery recovered. G5 human confirmation/handoff and defect closure remain unapproved. RUN-001 remains historical evidence awaiting human review.
+**Current status — 22 October 2026:** RUN-002 is complete: buggy 7 Pass / 1 Fail (TC07), fixed 8 Pass / 0 Fail. Aniekan approved G1/G2 after the case briefing, accepted G3 findings and separately authorized G4 fixed execution. After the self-contained G5 results, confirmation instructions and scoped handoff proposal, he replied “Verified!” The correction is confirmed by the QA engineer; the local handoff is accepted as Ready with known limitations and PAY-001 is Verified fixed for `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. The reply does not identify his verification method, dataset or individual observations; none are invented. The buggy control and original failure remain. RUN-001 is historical evidence; the new Loom and application-material review remain outstanding.
 
 ## Purpose and responsibilities
 
@@ -199,7 +199,7 @@ The pay instant is simulated Tuesday 13 October 2026, 09:00 UTC. It covers 5 Oct
 
 ### Progress control and completion criteria
 
-**Current RUN-002 progress:** buggy 8/8 executed, 7 Pass / 1 Fail (TC07); fixed 8/8 executed, 8 Pass / 0 Fail. No blocked/skipped cases or runner retries. G3 findings Accepted and G4 execution Authorized/completed; specific human confirmation observations and G5 handoff/closure decision remain outstanding. Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
+**Current RUN-002 progress:** buggy 8/8 executed, 7 Pass / 1 Fail (TC07); fixed 8/8 executed, 8 Pass / 0 Fail. No blocked/skipped cases or runner retries. G3 findings Accepted, G4 execution Authorized/completed, and G5 local handoff accepted following Aniekan's “Verified!” correction confirmation. PAY-001 is Verified fixed for the pinned fixed build. His verification method and detailed observations were not supplied. Report completed/planned totals, rule coverage, case outcomes, blockers and changed risks at material checkpoints and before review. Preserve an invalid attempt as a harness/environment issue rather than a product verdict.
 
 G3 is ready when each buggy case has an observed outcome or explicit blocker, evidence identifies its inputs/build, and the primary defect report includes reproduction, expected/actual, severity, cause or a marked hypothesis, proposed fix and release blockers. Unresolved cause or invalid evidence remains an investigation gap.
 
@@ -213,7 +213,7 @@ This packet excludes performance, usability, accessibility, security and new pro
 
 ## RUN-002: findings and fixed-retest proposal
 
-**Current stage: G3 accepted; G4 execution completed after authorization; G5 human confirmation and handoff review Pending.** Aniekan replied “accepted. continue” after receiving the focused confirmation guide. Record that as the findings decision; the reply does not specify his checks, observations or payment references, so those confirmation details remain unrecorded. No personal manual reproduction or source check is inferred. The earlier combined request remains withdrawn; G4 now has its own execution packet below.
+**Current stage: G5 local handoff accepted following correction confirmation; PAY-001 Verified fixed for the pinned fixed build.** At the earlier G3 checkpoint, Aniekan replied “accepted. continue” after the focused guide; its specific checks, observations and payment references were not supplied. The later “Verified!” reply confirms the correction in response to the G5 briefing, without supplying a verification method. Neither reply is represented as a particular manual reproduction or source check. The earlier combined request remains withdrawn; G4 received its separate authorization.
 
 ### Decision 1: review the finding and proposed correction
 
@@ -350,11 +350,11 @@ This set combines the defect confirmation (TC07) with adjacent regression: eligi
 
 ### Agent recommendation and decision boundary
 
-The fixed sequential local payroll flow meets BR01–BR06 within the eight-case scope: **Ready with known limitations**. The intentionally buggy control remains **Not ready**. PAY-001 has passed automated correction verification; the report stays Open pending human confirmation and a recorded disposition.
+The fixed sequential local payroll flow meets BR01–BR06 within the eight-case scope: **Ready with known limitations**. The intentionally buggy control remains **Not ready**. PAY-001 passed automated correction verification and is now **Verified fixed** for `mustpayroll-0.3.0-fixed-ca7ffbea67ec` following Aniekan's correction confirmation.
 
-**Proposed G5 decision:** accept the local QA handoff as Ready with known limitations and mark PAY-001 Verified fixed for build `mustpayroll-0.3.0-fixed-ca7ffbea67ec`, once human correction confirmation supports that disposition. Keep the deliberately buggy build and its failed result as the reproducible control. This proposal is not yet approved; the report remains Open.
+**Recorded G5 decision — Aniekan, 22 October 2026:** “Verified!” in response to the final briefing that proposed accepting the local QA handoff and marking PAY-001 Verified fixed for the pinned fixed build. Correction confirmation and the scoped handoff/disposition are recorded on that basis. The reply contains no verification method, dataset or individual checkpoint observations; no manual run, source inspection or payment reference is attributed to the human. Keep the deliberately buggy build and its failed result as the reproducible control.
 
-Confirm the corrected recovery below, inspect the before/after results and return observations plus a scoped G5 decision: approve that handoff/disposition, approve with specified limits/changes, reject, request investigation or report unable to confirm. An unexpected payment, changed reference/destination or failed recovery warrants investigation rather than acceptance. State any defect disposition explicitly; execution authorization or agent passes alone do not close a defect. Approval would authorize recording the scoped review/disposition and publishing the updated local handoff; it would not authorize production release or complete the broader assessment.
+The accepted scope permits recording and publishing this local handoff and defect disposition. It does not authorize production release or complete the broader assessment. The confirmation guide below remains available for reproduction; an unexpected payment, changed reference/destination or failed recovery should reopen investigation rather than be aligned with the recorded result by assumption.
 
 Limits: real banks/delivery, concurrent workers, process crashes, authentication/account changes and additional browsers remain unverified. The broader assessment is incomplete: the new Loom and professional-application review are outstanding. The weighted rubric/rejection reason was not supplied. A local QA handoff decision does not complete the entire assessment.
 
@@ -397,7 +397,7 @@ Original payment/notification IDs and destination must remain; only delivery cha
 
 **Return notes:** build/dataset/pay date, first/retry totals/payment count/reference, notification outcome, checks/evidence reviewed, uncertainty and local-handoff decision. Explicitly name any defect disposition you authorize for the fixed reference. Screenshots are optional. Specific G3 observations have not been supplied; add them if available rather than having the agent infer them.
 
-No human result, closure or handoff approval is recorded until you return. Retain the intentionally faulty build and original failure evidence.
+**Confirmation received:** Aniekan subsequently replied “Verified!” after the final briefing and these instructions. Retain that reported outcome separately from the agent's executed checkpoints; the human verification method and detailed observations were not supplied. Retain the intentionally faulty build and original failure evidence.
 
 ## Review history and current decision
 
@@ -418,7 +418,7 @@ No human result, closure or handoff approval is recorded until you return. Retai
 | 21 Oct 2026 / Codex | G4 preparation | Pinned fixed source/runtime and served identity verified; seven test/POM/helper files match; no fixed cases executed |
 | 22 Oct 2026 / Aniekan | RUN-002 G4 execution packet v1 | “Authorized” following the complete final-response eight-case briefing. Authorizes fixed execution/bounded investigation only; not closure, production release or handoff |
 | 22 Oct 2026 / Codex | G4 execution | Done: six UI and two direct-HTTP cases passed once on fresh records; same spec/expectations as buggy; original payment/destination/notification identities retained in TC07 |
-| Pending / Aniekan | RUN-002 G5 confirmation and handoff | Results and focused confirmation instructions prepared; human observations, scoped handoff decision and defect disposition not yet recorded |
+| 22 Oct 2026 / Aniekan | RUN-002 G5 correction confirmation and local handoff | “Verified!” following the self-contained results, focused confirmation instructions and proposed handoff/disposition. Correction confirmed; local handoff accepted as Ready with known limitations; PAY-001 Verified fixed for the pinned fixed build. Method/dataset/detailed observations not supplied; no particular human execution or source check claimed. Production release and broader assessment completion remain outside this decision |
 
 For a decision, record the reviewer/date, packet revision, review method, accepted limits and next authorized work. Copy essential current state into the shared context.
 
