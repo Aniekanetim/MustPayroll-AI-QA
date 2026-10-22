@@ -10,7 +10,8 @@
 | Confirmed root cause and proposed fix | Wrong completion predicate, saved-record probe, corrected payment identity and uniqueness in [report](../Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) | Met |
 | Automated failure / fixed retest | Same TC07 assertion fails $1,500 vs $3,000 in buggy and passes in fixed | Met |
 | Eight cases per build | RUN-002: [six fixed UI passes](../Quality%20Control/Fixed%20build/Functional%20testing/functional-testing-results.md#run-002) and [two fixed API passes](../Quality%20Control/Fixed%20build/API%20testing/api-testing-results.md#run-002); buggy 7 Pass / 1 Fail | Met within stated scope |
-| Safe operational handoff | Retry notification for delivery failure; preserve payment reference; stop and reconcile duplicates | Documented in directive |
+| Safe operational handoff | [RUN-002 packet](releases/RUN-002-release-handoff.md): recipient, next-owner actions, setup, recovery and evidence-retention limits | Local instructions documented; no external receiver acknowledgement or deployment claimed |
+| Release notes and explicit sign-off record | [Later documentation supplement](releases/RUN-002-release-handoff.md) with target, changes, evidence and actual G5 reply | Prepared from the existing accepted scope; not claimed to have been reviewed before the original decision |
 | Human QA review | G1/G2 approved; G3 findings accepted; G4 execution authorized/completed. Aniekan replied “Verified!” after the [G5 results and confirmation briefing](qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) | Correction confirmed; local handoff accepted; PAY-001 Verified fixed. Human method/detailed observations not supplied |
 | Loom and professional application material | New ≤5-minute video; review the professional cases for the second application | Outstanding |
 
@@ -31,6 +32,8 @@ The automated evidence and QA engineer's reported correction confirmation suppor
 Block release if a payroll retry duplicates a payment, changes an existing payment ID/amount/destination, or attempts notification after a failed payment. TC05–TC08 check those adjacent recovery responsibilities.
 
 ## Limits and handoff
+
+Use the [canonical release-handoff packet](releases/RUN-002-release-handoff.md) for release notes, sign-off fields and who does what next. The [strengthened G5 procedure](release-signoff.md) requires a packet before review, an actual scoped decision and a delivered handoff before eligible future closure. This documentation correction does not rerun tests or change the original accepted local result.
 
 This is not production-payroll approval. Real bank settlement, external idempotency, concurrent workers, process crashes, authentication/account changes, real notification receipt and additional browsers are not verified. A local unique constraint and successful sequential retry do not establish all of those guarantees.
 

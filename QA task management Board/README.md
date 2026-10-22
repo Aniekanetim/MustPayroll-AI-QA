@@ -32,7 +32,7 @@ Ticket references include stable IDs. When a file moves, keep its ID, contents a
 2. Execute only the work covered by the recorded human authorization. Keep actual outcomes, inferences and human decisions distinct.
 3. Open a new Dev Todo ticket for each distinct defect. Record reproduction, expected/actual behavior, evidence, severity, supported cause or hypothesis, proposed correction and release impact. Link its parent and relevant test case.
 4. Keep the parent assignment in Ready for QA while blocking findings or required decisions remain. Record its linked blockers and next action; do not repeatedly run the same tests against an unchanged build.
-5. When the assignment meets its completion criteria and required human QA decision, move it to Tested-Ok. Explicitly accepted nonblocking limitations remain recorded.
+5. Before closing a parent assignment, follow [G5 release sign-off and handoff](../QA/Quality%20assurance/release-signoff.md). Prepare its packet before review and record the actual scoped decision, next-owner actions and delivery/receipt state afterward. Move it to Tested-Ok only when its criteria, required sign-off, handoff delivery and any required recipient acceptance are met. Keep pending closure work in the current folder with a waiting reason. Explicitly accepted nonblocking limitations remain recorded.
 
 ## Developer response, retesting and regression
 
@@ -145,8 +145,10 @@ checked sources/revisions, affected checks, needed owner and next action.
 Index unanswered developer questions in the board README.
 
 ## Completion
-Not completed. Record coverage, defect dispositions, remaining limits,
-recovery/handoff and the actual scoped QA decision when available.
+Not completed. Link the versioned release-notes/sign-off/handoff packet.
+Record coverage, defect dispositions, remaining limits, actual scoped QA
+decision, next owner/actions, delivery and any required recipient acceptance.
+Do not infer release approval from a passing bug retest or a commit.
 ````
 
 ## Bug ticket template

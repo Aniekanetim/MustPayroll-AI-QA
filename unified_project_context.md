@@ -38,6 +38,12 @@ The condition was implemented before execution. **Every gate and testing type no
 
 For RUN-002, the human approved the eight-case buggy scope and expected behavior after the briefing. No separate manual script inspection or test replay is claimed. That approval does not authorize fixed retest, production release or retroactive approval of RUN-001.
 
+### Release sign-off and handoff improvement — 22 October 2026
+
+Aniekan requested research and correction after the closing message failed to provide release notes, an explicit sign-off packet and concrete owner/action handoff. The [researched G5 procedure](QA/Quality%20assurance/release-signoff.md) now requires one versioned packet before review: release changes, completion/exit-criteria evidence, risks, scoped QA decision proposal and next-owner/recovery instructions. After an actual decision, record its reply/scope/method, deliver the packet/action summary through the authorized channel and record actual receipt. Required sign-off/delivery/recipient acceptance blocks parent completion while pending. Production go/no-go and deployment remain separate.
+
+The [RUN-002 release-handoff supplement](QA/Quality%20assurance/releases/RUN-002-release-handoff.md) records the existing accepted local scope and next actions for Aniekan. It is dated as a later supplement, not a packet represented as reviewed before the original “Verified!” reply. No new verification method, receiver acknowledgement, product test or production approval is invented. The reusable AI agent Software QA package receives the same procedure/template and closure safeguards, without copying this run's evidence or approval. Application/test sources, existing results and the native schedule remain unchanged.
+
 ## Research, preparation and execution
 
 The standards review used ISTQB CTFL v4.0.1, Testing with Generative AI v1.1 and public descriptions of ISO/IEC/IEEE 29119-2/-3:2021 and ISO/IEC 25010:2023. Full paid ISO normative texts were not audited; no formal conformance claim is made. Seven activities, readiness, ongoing control and completion/learning were made explicit beneath the review gates.

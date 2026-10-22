@@ -38,6 +38,8 @@ Aniekan accepted the findings, then authorized the itemized G4 plan on 22 Octobe
 
 Following Aniekan's “Verified!” reply, the fixed sequential local handoff is accepted as Ready with known limitations and PAY-001 is Verified fixed for `mustpayroll-0.3.0-fixed-ca7ffbea67ec`. The buggy control remains Not ready. [The completion-review record](Quality%20assurance/qa-workflow.md#run-002-completion-review-and-human-correction-confirmation) contains the eight comparisons, actual human reply, limits, recovery and [confirmation instructions](Quality%20assurance/qa-workflow.md#qa-confirmation-guide-corrected-payroll-retry). His verification method and individual observations were not supplied; no particular manual execution or source inspection is claimed.
 
+The [release notes, QA sign-off and operational handoff](Quality%20assurance/releases/RUN-002-release-handoff.md) now consolidate the target, user impact, completion evidence, original scoped decision and next-owner actions. This is a later documentation supplement to the accepted local run, not a new approval or production release. Future G5 closures require that packet before review and a usable handoff afterward.
+
 ## Results / handoff appendix
 
 | Deliverable | Link | Current state |
@@ -53,6 +55,7 @@ Following Aniekan's “Verified!” reply, the fixed sequential local handoff is
 | Ticket intake and handoffs | [QA task management board](../QA%20task%20management%20Board/README.md) | Five status folders, ticket templates and verified routing; hourly check-in ACTIVE, first unattended execution not yet observed |
 | AI observations | [Investigation](investigation.md) | Browser and causal investigation recorded |
 | Release decision | [Release-readiness checklist](Quality%20assurance/release_readiness.md) | RUN-002 local handoff accepted as Ready with known limitations; PAY-001 Verified fixed for the pinned fixed build |
+| Release notes, sign-off and owner handoff | [RUN-002 release-handoff packet](Quality%20assurance/releases/RUN-002-release-handoff.md) | Later supplement records the existing local decision, evidence, recovery and next actions; no new receiver acknowledgement or deployment claimed |
 | Loom | No new recording supplied | Outstanding; record ≤5 minutes |
 
 ## Recovery handoff

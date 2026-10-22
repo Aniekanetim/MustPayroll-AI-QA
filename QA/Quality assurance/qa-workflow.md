@@ -66,7 +66,7 @@ A cycle can combine or change testing types. Preserve its current progress and e
 | G2 — Design and readiness | Cases, expected outcomes, scripts/assertions, data, build/environment checks and execution bounds | Approve bounded execution, or request preparation changes |
 | G3 — Findings confirmation | Actual outcomes, evidence, defect reproduction instructions, cause-check steps, severity/priority/status rationale, proposed correction and gaps | QA performs the focused confirmation, then approves, rejects, requests changes/investigation or reports blocked confirmation; fixed execution remains separate |
 | G4 — Fix and retest | Identified correction/build, original failure, confirmation checks and adjacent regression | Authorize retest; product-code changes require their own authorization |
-| G5 — Completion and handoff | Criteria assessment, before/after evidence, defect disposition, residual risks, recovery and lessons learned | Approve, approve with stated limits, request changes or reject the scoped handoff |
+| G5 — Completion and handoff | Versioned packet: release notes, completion/exit-criteria evidence, defect/risk disposition, scoped sign-off proposal and next-owner/recovery instructions | Approve, approve with stated limits, request changes or reject; then record the actual decision and deliver the handoff. Production authority remains separate |
 
 G1 and G2 can be reviewed together when the complete packet is available. Before asking for a decision, brief the QA engineer in the conversation on the objective, each proposed check and its expected outcome, why those checks were selected over alternatives, gaps and the exact next work. Link the details as supporting material; do not substitute a link or approval button for the briefing. The QA engineer can challenge, replace or expand the checks before authorizing execution. Approval identifies the packet revision, build, allowed work, reviewer and date. Silence is not approval. Within an approved scope, the agent performs routine preparation, execution, investigation and documentation autonomously.
 
@@ -129,6 +129,12 @@ Keep these statuses distinct:
 - **Defect:** Open until its correction and verification support an accepted disposition; report approval alone does not close it.
 
 Connect requirements, cases, observations, defects and retests by ID and build. Update detailed records, [shared context](../../unified_project_context.md) and ignored assistant continuity after material changes. Shared context must stand alone. A completed execution can contain failed tests, and an approved handoff can retain explicit open risks.
+
+## Release sign-off and operational handoff
+
+Follow the [release sign-off procedure](release-signoff.md) and [packet template](templates/completion-handoff.md). Prepare the packet before G5 review; it must identify changes, intended use/target, actual coverage and exit criteria, open risks, the proposed decision and who does what next. After the actual decision, finalize its reply/scope/limits and deliver a self-contained action handoff through the authorized channel. Record actual delivery/receipt; publication does not prove another owner received or accepted it. Do not mark a parent assignment complete while a required closure item is pending. An individual bug links its scoped disposition and parent packet without claiming full release approval.
+
+The final response must include the target/verdict, changes, evidence, remaining limits, direct packet link and next-owner actions. A commit link or test totals alone cannot close the workflow. Local-only work marks production rollout/rollback/monitoring Not applicable with reasons. A later material change returns to the affected gate; a documentation supplement does not erase or invent the original decision.
 
 ## RUN-002: scope and test-design packet v2
 
@@ -361,6 +367,8 @@ The fixed sequential local payroll flow meets BR01–BR06 within the eight-case 
 **Recorded G5 decision — Aniekan, 22 October 2026:** “Verified!” in response to the final briefing that proposed accepting the local QA handoff and marking PAY-001 Verified fixed for the pinned fixed build. Correction confirmation and the scoped handoff/disposition are recorded on that basis. The reply contains no verification method, dataset or individual checkpoint observations; no manual run, source inspection or payment reference is attributed to the human. Keep the deliberately buggy build and its failed result as the reproducible control.
 
 The accepted scope permits recording and publishing this local handoff and defect disposition. It does not authorize production release or complete the broader assessment. The confirmation guide below remains available for reproduction; an unexpected payment, changed reference/destination or failed recovery should reopen investigation rather than be aligned with the recorded result by assumption.
+
+**Closure-documentation correction — 22 October 2026:** the earlier closing message did not present release notes, a complete sign-off packet or concrete owner/action handoff. The [RUN-002 release-handoff supplement](releases/RUN-002-release-handoff.md) now consolidates those facts from the existing evidence and decision. It is a later document, not a packet claimed to have been reviewed before the original reply. No new testing, human verification method, deployment or receiver acceptance is inferred. The strengthened G5 procedure above applies to future closures.
 
 Limits: real banks/delivery, concurrent workers, process crashes, authentication/account changes and additional browsers remain unverified. The broader assessment is incomplete: the new Loom and professional-application review are outstanding. The weighted rubric/rejection reason was not supplied. A local QA handoff decision does not complete the entire assessment.
 

@@ -1,6 +1,6 @@
 # MustPayroll: AI-led QA investigation
 
-[intent.md](QA/Quality%20assurance/intent.md) · [directive.md](QA/directive.md) · [Defect and root cause](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) · [Release-readiness checklist](QA/Quality%20assurance/release_readiness.md)
+[intent.md](QA/Quality%20assurance/intent.md) · [directive.md](QA/directive.md) · [Defect and root cause](QA/Quality%20Control/bug_report/duplicate-payment-after-notification-failure.md) · [Release-readiness checklist](QA/Quality%20assurance/release_readiness.md) · [Release notes and QA sign-off](QA/Quality%20assurance/releases/RUN-002-release-handoff.md)
 
 **Second attempt in progress. A new Loom recording has not been provided.** The original submission is preserved at [MustPayroll](https://github.com/Aniekanetim/MustPayroll).
 
@@ -79,5 +79,6 @@ Start with the business rule, follow the reproduction, then compare the same cas
 | API cases and Postman reproduction | [Buggy API](QA/Quality%20Control/Buggy%20build/API%20testing/api-test-suite.md) · [Fixed API](QA/Quality%20Control/Fixed%20build/API%20testing/api-test-suite.md) |
 | Automated failure and retest | [Buggy command](QA/Quality%20Control/Buggy%20build/Functional%20testing/executed_functional_test_cases/README.md) · [Fixed command](QA/Quality%20Control/Fixed%20build/Functional%20testing/executed_functional_test_cases/README.md) |
 | Handoff, gaps and decision | [directive.md](QA/directive.md) |
+| Release notes, sign-off and next-owner actions | [RUN-002 local handoff](QA/Quality%20assurance/releases/RUN-002-release-handoff.md) |
 
 The application and page objects are adapted from the previous MustPayroll snapshot `d51939b`. Prior results, recordings and professional case claims are not reused as evidence of this attempt. The payroll application originated from an MIT-licensed [banking demo](https://github.com/sahajamit/webmcp-acmebank-demo); this repository documents the QA work on the adapted local fixture.
