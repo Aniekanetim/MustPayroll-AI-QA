@@ -4,6 +4,8 @@
 
 ## Purpose and responsibilities
 
+**Planned task intake:** the [task-board implementation plan](task-board-implementation-plan.md) adds five folder statuses at the repository root. Build/feature tickets enter Ready for QA; each discovered defect gets a separate ticket in Dev Todo. Developers return fixed/refuted tickets to Retest; failed retests go to Rework, successful reviewed tickets to Tested-Ok, and newly discovered regressions receive new Dev Todo tickets. The board will select work; this workflow will continue to govern its execution and human decisions. Board creation and scheduled check-ins have not yet been implemented.
+
 The agent performs the testing work. The QA engineer directs priorities, checks the reasoning and evidence, and approves the scoped decisions. Human verification can include inspecting requests, records, scripts and assertions; it does not require manually repeating every agent action. Record the review actually performed.
 
 Testing checks product quality. Quality assurance also improves the process that produces those checks, including requirement review, execution controls and lessons learned. Both are needed here.

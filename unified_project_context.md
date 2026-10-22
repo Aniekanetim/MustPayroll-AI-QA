@@ -10,6 +10,14 @@ The application and POM are reused. Results from the previous submitted reposito
 
 ## Operating model and informed approval
 
+### Planned ticket-board improvement — 22 October 2026
+
+Aniekan requested implementation beginning with a [concrete plan](QA/Quality%20assurance/task-board-implementation-plan.md). Each Markdown file is a ticket, and its folder is its status under the proposed root `QA task management Board`: Ready for QA, Dev Todo, Tested-Ok, Retest and Rework. The AI QA checks Ready for QA/Retest; developers check Dev Todo/Rework. Build/feature assignments and newly discovered bug tickets are separate. Each defect enters Dev Todo; the developer records a fix or refutation and moves it to Retest. The agent retests and runs relevant regression. Failed original retests go to Rework, successful reviewed tickets to Tested-Ok, and new regressions get new linked tickets in Dev Todo. Parent testing tickets track their linked blocking defects.
+
+The existing workflow governs execution and human review. Codex scheduling will supply check-ins, using this local checkout and existing chat; cadence is not yet specified. The user deferred additional refutation rules and the project-context folder containing PRD/BRD/Figma and other source documents. This step prepares the implementation plan only: no live board, scheduler, developer automation, product changes or new product tests. Completed RUN-001/RUN-002 evidence and their decisions remain unchanged.
+
+### Existing human-review policy
+
 Aniekan confirmed that the agent performs the standard QA workflow while the QA engineer reviews and approves decisions. Human review can inspect reasoning, records, scripts and assertions without replaying every agent action. Record the actual method; do not represent agent execution as human manual work.
 
 The workflow uses planning, analysis, design, test implementation/preparation, execution, completion and continuous monitoring/control. Our five review gates are project governance: G1 scope/analysis; G2 design/readiness; G3 findings; G4 fix/retest; G5 completion/handoff. Activities can overlap or repeat. Product-code implementation requires separate authorization.
